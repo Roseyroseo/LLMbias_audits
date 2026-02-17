@@ -1,19 +1,19 @@
 const methodologyBlocks = [
   {
     heading: "Models Used",
-    body: "[TODO: Update src/home/sections/methodologySection.js -> List production model names, versions, providers, and exact access dates.]"
+    body: "We tested 11 LLMs available via API: Amazon Nova Micro v1, Anthropic Claude Haiku 4.5, DeepSeek Chat, Google Gemini 3 Flash Preview, Google Gemma 2 27B-IT, Meta LLaMa 4 Maverick, OpenAI GPT-4o, OpenAI GPT-5 Nano, OpenAI GPT-OSS-120B, Qwen Max, and X.AI Grok 3 Mini."
   },
   {
     heading: "Prompt Engineering",
-    body: "[TODO: Update src/home/sections/methodologySection.js -> Document shared prompt scaffold, controlled variables, and domain-specific slots.]"
+    body: "We used a controlled perturbation design: core content remained identical while demographic markers (e.g., names, gender, race, disability, language) were systematically varied. Each domain used a shared scaffold with specific task instructions (e.g., 'evaluate this teacher,' 'screen this applicant,' 'triage this case'). Models were instructed to return structured outputs—usually JSON with numeric scores and categorical labels. All prompts were submitted multiple times per combination to assess consistency."
   },
   {
     heading: "Data Extraction",
-    body: "[TODO: Update src/home/sections/methodologySection.js -> Describe parsing pipeline, schema fields, and QA/inter-rater checks.]"
+    body: "Outputs were parsed via automated pipelines extracting schema fields (likelihood scores, recommendation levels, urgency ratings, etc.). For each domain, we logged model, demographic condition, repetition, and all returned values. Quality assurance included manual verification of parsed samples and exclusion of zero-variance runs where models returned identical scores across all inputs."
   },
   {
     heading: "Statistical Techniques",
-    body: "[TODO: Update src/home/sections/methodologySection.js -> Specify tests, confidence intervals, effect sizes, and correction strategy.]"
+    body: "We used both parametric and non-parametric tests: factorial ANOVA (or Welch's ANOVA when variances differed), Kruskal–Wallis, and Mann–Whitney U. Effect sizes were reported as partial eta-squared (η²) and rank-biserial correlation. Post-hoc comparisons used Tukey's HSD. Assumptions were checked via Levene's test (homogeneity of variance) and Shapiro–Wilk (normality). Confidence intervals were set at 95%, with corrections for multiple comparisons."
   }
 ];
 
