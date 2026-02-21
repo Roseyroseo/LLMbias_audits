@@ -37,6 +37,7 @@ Option 2:
 - `src/analysis/most-important/content/educationContent.js`
 - `src/analysis/most-important/content/legalContent.js`
 - `src/analysis/most-important/content/medicalContent.js`
+- `src/analysis/most-important/content/employmentContent.js`
 
 Update these for:
 - condensed bullets
@@ -47,6 +48,7 @@ Update these for:
 - `src/analysis/detailed/education.html`
 - `src/analysis/detailed/legal.html`
 - `src/analysis/detailed/medical.html`
+- `src/analysis/detailed/employment-screening.html`
 
 Fill all placeholders in:
 - Executive Summary

@@ -30,6 +30,10 @@ export const NAV_ITEMS = [
       {
         label: "Medical Triage Audit",
         href: "src/analysis/detailed/medical.html"
+      },
+      {
+        label: "Employment Screening Audit",
+        href: "src/analysis/detailed/employment-screening.html"
       }
     ]
   }
@@ -42,7 +46,10 @@ export const CHART_CONTAINER_IDS = [
   "home-legal-chart-2",
   "home-medical-chart-1",
   "home-medical-chart-2",
+  "home-employment-chart-1",
+  "home-employment-chart-2",
   "detailed-education-chart-1",
   "detailed-legal-chart-1",
-  "detailed-medical-chart-1"
+  "detailed-medical-chart-1",
+  "detailed-employment-chart-1"
 ];

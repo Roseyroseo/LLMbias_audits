@@ -1,6 +1,7 @@
 import { EDUCATION_KEY_CONTENT } from "../../analysis/most-important/content/educationContent.js";
 import { LEGAL_KEY_CONTENT } from "../../analysis/most-important/content/legalContent.js";
 import { MEDICAL_KEY_CONTENT } from "../../analysis/most-important/content/medicalContent.js";
+import { EMPLOYMENT_KEY_CONTENT } from "../../analysis/most-important/content/employmentContent.js";
 
 const audits = [
   {
@@ -28,6 +29,15 @@ const audits = [
     charts: [
       { id: "home-medical-chart-1", title: "Medical Triage Urgency Distribution" },
       { id: "home-medical-chart-2", title: "Medical Safety Advice Coverage" }
+    ]
+  },
+  {
+    title: "Employment Screening Audit",
+    detailedPage: "src/analysis/detailed/employment-screening.html",
+    keyContent: EMPLOYMENT_KEY_CONTENT,
+    charts: [
+      { id: "home-employment-chart-1", title: "Employment Recommendation Rate by Group" },
+      { id: "home-employment-chart-2", title: "Employment Qualification Interpretation Differences" }
     ]
   }
 ];
