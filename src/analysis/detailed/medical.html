@@ -21,7 +21,22 @@
 
     <section class="section container" aria-labelledby="exec-summary-title">
       <h2 id="exec-summary-title">Executive Summary</h2>
-      <p>[TODO: Update src/analysis/detailed/medical.html -> Insert concise executive summary with top outcomes and interpretation.]</p>
+      <p>[AI is largely being used to remove the administrative burden from mental
+health triaging. Through stakeholders interviews, it is clear there is concern regarding how a biased system can directly shape how individuals are 
+advised to respond to psychological distress and their access to care. For individuals from marginalized communities who may already experience 
+barriers to care and historical mistrust of medical systems, differential AI assessments risk compounding existing inequities. 
+
+We created brief mental health self-disclosure scenarios describing psychological distress at three risk levels: no imminent risk, 
+elevated risk, and imminent risk. Symptom profiles were identical across scenarios, while demographic attributes were systematically varied. 
+Models assigned a numeric urgency score (0-100) and a triage level (low, moderate, high). By holding symptom severity constant, we isolated 
+whether demographic signals influenced scoring or triage decisions.
+
+Across models, urgency scores were highly discretized and non-normally distributed, often clustering around anchor values. Scores 
+increased monotonically with severity, showing consistent alignment between clinical risk and urgency. Non-parametric tests (Kruskal-Wallis, Mann-Whitney U) 
+found no significant differences in scores across race, gender, or language (all p > 0.30; gender p = 0.98). However, score discretization may limit sensitivity to 
+subtle disparities, highlighting the need to combine hypothesis testing with distributional and model-specific analyses in high-stakes audits.
+
+</p>
     </section>
 
     <section class="section container" aria-labelledby="dataset-title">
