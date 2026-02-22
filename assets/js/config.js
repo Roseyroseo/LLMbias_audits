@@ -4,7 +4,7 @@ export const SITE_CONFIG = {
   footerYearPlaceholder: "2026",
   artifactLinks: {
     report: "https://example.com/report",
-    code: "https://example.com/code",
+    code: "https://github.com/staeiou/auditlab_wi26",
     poster: "https://example.com/poster"
   }
 };
