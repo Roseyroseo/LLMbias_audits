@@ -212,22 +212,92 @@ presentation below and provide your triage assessment.
     <section class="section container" aria-labelledby="findings-title">
       <h2 id="findings-title">Findings</h2>
       <h3>Pattern 1: Urgency Recommendation Gaps</h3>
-      <p>[TODO: Update src/analysis/detailed/medical.html -> Insert finding, evidence, and interpretation.]</p>
-      <h3>Pattern 2: Safety-Net and Follow-Up Guidance</h3>
-      <p>[TODO: Update src/analysis/detailed/medical.html -> Insert finding, evidence, and interpretation.]</p>
-      <h3>Pattern 3: Stability Across Prompt Variants</h3>
-      <p>[TODO: Update src/analysis/detailed/medical.html -> Insert finding with sensitivity/robustness notes.]</p>
+      <p>Within each severity category, urgency scoring shows negligible demographic effects for race and gender.</p>
+      <ul>
+        <li>Severity-stratified Kruskal-Wallis tests yield η² ≈ 0 for race and gender across severity classes (no imminent risk, elevated risk, imminent risk)</li>
+        <li> Language shows small magnitude differences (|rank-biserial| ≈ 0.025 for imminent risk; ≈ 0.034 for no imminent risk), with non-significant p-values.</li>
+      </ul>
+      <h3>Pattern 2: Severity-to-Urgency Mapping</h3>
+      <p>Severity is the dominant driver of urgency scores. The model shows consistent performance across race, gender, and language categories.</p>
+      <ul>
+        <li>Severity main effect: partial η² ≈ 0.946-0.947</li>
+        <li>Interaction effects are negligible:</li>
+        <ul>
+          <li>severity x race partial η² ≈ 0.000469</li>
+          <li>severity x gender partial η² ≈ 0.001594</li>
+          <li>severity x language partial η² ≈ 0.000490</li>
+        </ul>
+      </ul>
+      <p> An increase in severity of case seems to correspond with an increase in urgency scoring across
+        demographic variables, with no evidence of under or over-triaging specific groups at any severity level.
+      </p>
+      
+      
+      <h3>Pattern 3: Cross-Model Consistency</h3>
+      <p>Model-wise demographic effect sizes are near zero, indicating minimal cross-vendor heterogeneity in urgency scoring.</p>
+      <ul> 
+        <li>Per-model Kruskal η² estimates are near 0; small negative values are interpreted as 0. </li>
+      </ul>
+      With certain domains, such as employment screening, we have observed that some models show more demographic sensitivity than others. 
+      In this mental health triage task, however, we find that all models show minimal demographic effects, suggesting a consistent severity-driven approach across vendors.
     </section>
 
     <section class="section container" aria-labelledby="limitations-title">
       <h2 id="limitations-title">Limitations</h2>
-      <p>[TODO: Update src/analysis/detailed/medical.html -> Add methodological and clinical-context limitations.]</p>
+      <ul>
+        <li>Focus on urgency score: Although both the urgency score and triage level were considered, the analysis focuses primarily on urgency scores due to their more 
+          granular nature. Categorical triage levels may reveal additional insights.</li>
+        <li>Language comparison: Language tests compare scoring differences between individuals who noted their primary language as being 
+          English vs Spanish. These were chosen because they are the most commonly spoken languages in the US. Ideally, we would like 
+          to analyze scoring differences across a wider range of languages, including but not limited to Chinese, Tagalog, Arabic, and Hindi amongst others.
+        </li>
+        <li>Effect-size: p-values can be sensitive to sample size and distribution assumptions. In this analysis, we report effect sizes (η²) rather than p-values to better reflect the 
+          magnitude of demographic differences.</li>
+      
+        </ul>
     </section>
 
     <section class="section container" aria-labelledby="appendix-title">
-      <h2 id="appendix-title">Appendix and References</h2>
-      <p>[TODO: Update src/analysis/detailed/medical.html -> Add citation list and supplemental notes.]</p>
-      <p>[TODO: Update src/analysis/detailed/medical.html -> Add citation...]</p>
+      <h2 id="appendix-title">Appendix</h2>
+      <h3> Models Evaluated (11)</h3>
+      <ul>
+        <li>amazon/nova-micro-v1</li>
+        <li>anthropic/claude-haiku-4.5</li>
+        <li>deepseek/deepseek-chat</li>
+        <li>google/gemini-3-flash-preview</li>
+        <li>google/gemma-2-27b-it</li>
+        <li>meta-llama/llama-4-maverick</li>
+        <li>openai/gpt-4o</li>
+        <li>openai/gpt-5-nano</li>
+        <li>openai/gpt-oss-120b</li>
+        <li>qwen/qwen-max</li>
+        <li>x-ai/grok-3-mini</li>
+      </ul>
+      <h3> Statistical Details</h3>
+      <h4> Severity-stratified tests</h4>
+      <ul>
+        <li>Kruskal-Wallis (race, gender) with η² </li>
+        <li>Mann-Whitney U (language) with |rank-biserial|</li>
+      </ul>
+      <h4> Calibration tests:</h4>
+      <ul> 
+        <li> Type III ANOVA with partial η² for severity main effect and severity x demographic interactions</li>
+      </ul>
+      <h3> Key values (urgency_score)</h3>
+      <ul> 
+        <li> Severity main effect partial η² ≈ 0.946-0.947</li>
+        <li> Interaction partial η²</li>
+        <ul>
+          <li> severity x race ≈ 0.000469</li>
+          <li> severity x gender ≈ 0.001594</li>
+          <li> severity x language ≈ 0.000490</li>
+        </ul>
+        <li> Severity-stratified language differences</li>
+        <ul>
+          <li> |rank-biserial| ≈ 0.025 (imminent risk), 0.034 (no imminent risk)</li>
+        </ul>
+      </ul>
+
     </section>
   </main>
 
