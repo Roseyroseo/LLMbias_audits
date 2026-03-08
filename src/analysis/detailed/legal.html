@@ -14,57 +14,201 @@
     <section class="section container" aria-labelledby="page-title">
       <h1 id="page-title">Legal Audit</h1>
       <p>
-        In the legal audits, we evaluate whether large language models change the quality and urgency of legal support based on demographic signals that should be irrelevant to the legal merits. 
+        In the legal audit, we evaluate whether large language models change the quality of legal support based on demographic signals that should be irrelevant to the legal merits. 
       </p>
       <p>
-        One audit frames the model as a legal intake assistant for a San Diego legal aid or law firm, where the model must assign a next-step recommendation and a risk level for two eviction-related scenarios under California and San Diego tenant protections, with explicit instructions not to rely on personal characteristics unless legally relevant. 
+        The audit frames the model as an attorney assessing how a judge is likely to behave across core courtroom dimensions such as credibility filtering, evidence evaluation, procedural strictness, and risk posture, again emphasizing that demographic attributes should not influence scoring. 
       </p>
       <p>
-        A second audit frames the model as an attorney assessing how a judge is likely to behave across core courtroom dimensions such as credibility filtering, evidence evaluation, procedural strictness, and risk posture, again emphasizing that demographic attributes should not influence scoring. 
-      </p>
-      <p>
-        Together, these settings reflect realistic legal support contexts in which biased shifts in risk assessment, escalation recommendations, or perceived judicial behavior could meaningfully affect case strategy, access to counsel, and the overall quality of legal representation.
+        These settings reflect realistic legal support contexts in which biased shifts perceived judicial behavior could meaningfully affect case strategy and the overall quality of legal representation.
       </p>
     </section>
 
     <section class="section container" aria-labelledby="exec-summary-title">
       <h2 id="exec-summary-title">Executive Summary</h2>
-      <p>[TODO: Update src/analysis/detailed/legal.html -> Insert concise executive summary with top outcomes and interpretation.]</p>
+      <p>
+        The legal audits evaluate whether large language models alter legal guidance or judicial reasoning assessments when demographic signals are varied while the underlying legal facts remain identical. Across the judge evaluation audit, model identity was the dominant source of variation in outputs, explaining up to 70.2% of variance in the responsiveness metric (Shift) and substantial variance in case scoring behavior. In contrast, demographic variables such as ethnicity, gender, immigration status, and age produced extremely small omnibus effects, typically with &epsilon;<sup>2</sup> &le; 0.002.
+      </p>
+      <p>
+        Although demographic effects were minimal overall, several localized pairwise contrasts appeared within individual models. For example, Claude 3.5 showed moderate ethnicity effects in credibility and procedural reasoning scores, while Gemma 2 27B produced large pairwise contrasts in Case 1 risk assessments (Cliff&rsquo;s &delta; up to 0.55). These results suggest that differences in legal reasoning behavior are primarily driven by model architecture rather than consistent demographic bias, though localized disparities remain possible in individual systems.
+      </p>
     </section>
 
     <section class="section container" aria-labelledby="dataset-title">
       <h2 id="dataset-title">Dataset and Prompts</h2>
-      <p>[TODO: Update src/analysis/detailed/legal.html -> Describe legal scenario set, jurisdiction assumptions, and data boundaries.]</p>
-      <p>[TODO: Update src/analysis/detailed/legal.html -> Add representative prompt templates and controlled variables.]</p>
+      <p>
+        We used a controlled prompt design to examine whether large language models change their evaluation of a judge when demographic signals are varied while the legal facts remain constant. The task simulates a lawyer preparing for litigation in San Diego, California and attempting to anticipate how a particular judge might behave in court. In this setting, the model is instructed to evaluate the judge across several dimensions relevant to legal strategy and courtroom behavior.
+      </p>
+
+      <p>
+        Each prompt presents two independent legal scenarios involving the same judge. The cases are designed to represent different types of legal questions under United States constitutional and procedural law. The first case concerns an excessive force claim involving Rule 50 Judgment as a Matter of Law (JMOL) and qualified immunity after a jury verdict. The second case concerns a Fourth Amendment search and seizure dispute in which a motion to suppress evidence is granted under the exclusionary rule and the protections of the Fourteenth Amendment.
+      </p>
+
+      <p>
+        For each scenario, the model is required to assign numerical scores describing how the judge typically behaves in several courtroom dimensions. These dimensions reflect legal reasoning patterns that attorneys often consider when preparing arguments and case strategy:
+      </p>
+
+      <ul>
+        <li><strong>Credibility filter</strong> – whether the judge tends to trust police or expert testimony or scrutinize it closely.</li>
+        <li><strong>Evidence gatekeeping</strong> – whether the judge is strict or permissive when admitting or excluding evidence.</li>
+        <li><strong>Procedural tolerance</strong> – whether the judge penalizes procedural mistakes or allows flexibility during litigation.</li>
+        <li><strong>Risk posture</strong> – whether the judge intervenes early to prevent potential unfairness or prefers allowing the jury to resolve disputes.</li>
+      </ul>
+
+      <p>
+        Scores are assigned using a standardized five point rubric ranging from 1 (very low or rarely true) to 5 (very high or consistently true). Models are explicitly instructed to base their evaluation only on the legal facts presented in the cases and not on personal attributes such as race, gender, nationality, age, or language.
+      </p>
+
+      <p>
+        To enable systematic analysis, models are required to return their evaluations in a structured JSON format containing eight scores: credibility, evidence, procedure, and risk for each of the two cases. This structured output allows responses to be converted into numerical datasets and analyzed statistically to detect potential demographic sensitivity in judicial evaluations.
+      </p>
     </section>
 
     <section class="section container" aria-labelledby="metrics-title">
       <h2 id="metrics-title">Metrics and Statistical Tests</h2>
-      <p>[TODO: Update src/analysis/detailed/legal.html -> Define metrics for helpfulness, caution language, and omission rates.]</p>
-      <p>[TODO: Update src/analysis/detailed/legal.html -> Add statistical tests, assumptions, and confidence interval strategy.]</p>
-      <div id="detailed-legal-chart-1" class="chart-placeholder" data-chart-title="Legal Detailed Metric Overview"></div>
-      <p>[TODO: Update src/analysis/detailed/legal.html -> Replace with real charts later]</p>
+      <p>
+        Model responses were converted into structured numerical scores representing four judicial reasoning dimensions: credibility, evidence evaluation, procedural reasoning, and legal risk. Composite metrics were calculated for Case 1 and Case 2 scores as well as a responsiveness metric (Shift), defined as the difference between Case 2 and Case 1 scores to capture how models adjusted reasoning when evidence clarity increased.
+      </p>
+
+      <p>
+        The Kruskal&ndash;Wallis test was used as a nonparametric omnibus test to determine whether demographic groups differed in their scoring distributions.
+
+        Epsilon squared (&epsilon;<sup>2</sup>) was reported as the effect size for Kruskal&ndash;Wallis tests to estimate the proportion of variance in model scores attributable to demographic group differences.
+
+        When omnibus tests indicated potential group differences, pairwise comparisons were conducted using the Mann&ndash;Whitney U test to identify which specific demographic groups differed in their score distributions.
+
+        Holm’s correction was applied to pairwise p-values to control the familywise error rate and reduce the risk of false positives resulting from multiple comparisons.
+
+        Cliff’s delta (&delta;) was used as the effect size for Mann&ndash;Whitney comparisons because it provides a distribution-free measure of the magnitude and direction of differences between two ordinal groups.
+      </p>
+      <p>
+        Because the outcome variables are ordinal ratings, nonparametric statistical methods were used. Kruskal&ndash;Wallis tests evaluated omnibus differences across demographic groups, with epsilon squared (&epsilon;<sup>2</sup>) reported as an effect size representing the proportion of variance explained. When omnibus results suggested potential group differences, pairwise comparisons were conducted using the Mann&ndash;Whitney U test with Holm correction for multiple comparisons. Cliff&rsquo;s delta (&delta;) was reported as the pairwise effect size to quantify the magnitude and direction of group differences.
+      </p>
+
+      <div class="figure">
+      <img src="judge_mann_whitney_pairwise.png" alt="Mann-Whitney Pairwise Comparisons across models" width="500" height="600">
+        <p class="caption">Model Wise Mann-Whitney Pairwise Comparisons of Demographic Variables.</p>
+      </div>
+
+      <p>
+        The visualization above summarizes the magnitude of demographic effects across models and scoring dimensions.
+      </p>
     </section>
 
     <section class="section container" aria-labelledby="findings-title">
       <h2 id="findings-title">Findings</h2>
+
       <h3>Pattern 1: Helpfulness and Access to Guidance</h3>
-      <p>[TODO: Update src/analysis/detailed/legal.html -> Insert finding, evidence, and practical interpretation.]</p>
+      <p>
+        Across the legal audits, models generally provided consistent levels of guidance regardless of demographic attributes. Omnibus Kruskal&ndash;Wallis tests showed that demographic perturbations such as ethnicity, gender, immigration status, and age explained extremely small proportions of variance in model outputs, typically with effect sizes of &epsilon;<sup>2</sup> &le; 0.002. In contrast, model identity explained a much larger share of variation in legal scoring behavior, accounting for 46.0% of variance in Case 1 scores and 69.5% in Case 2 scores. This suggests that differences in the accessibility and structure of legal guidance are driven primarily by model architecture rather than demographic characteristics of the individuals described in the prompt.
+      </p>
+
       <h3>Pattern 2: Safety and Caution Messaging</h3>
-      <p>[TODO: Update src/analysis/detailed/legal.html -> Insert finding, evidence, and interpretation.]</p>
+      <p>
+        Safety-oriented judgments, such as risk assessment and recommendations for escalation, showed similar patterns. Most demographic perturbations produced negligible omnibus effects, indicating that models generally maintained consistent safety posture across demographic conditions. However, localized pairwise contrasts appeared within some models. For example, Gemma 2 27B produced large pairwise differences in Case 1 risk assessments, with Cliff&rsquo;s &delta; values reaching 0.55 in comparisons involving Jewish-coded names. Claude 3.5 also showed moderate gender effects in Case 1 risk scoring (&epsilon;<sup>2</sup> = 0.183). Although these effects were not consistent across models, they illustrate that individual systems may occasionally adjust safety messaging based on demographic cues.
+      </p>
+
       <h3>Pattern 3: Variation by Prompt Framing</h3>
-      <p>[TODO: Update src/analysis/detailed/legal.html -> Insert finding with any robustness checks.]</p>
+      <p>
+        Model responses also varied depending on how the legal scenario was framed and how clearly the evidence supported intervention. Across the audit, the Shift metric, which measures the change in scoring between the ambiguous Case 1 scenario and the clearer Case 2 scenario, was dominated by model-level variation rather than demographic effects. Model identity explained approximately 70.2% of variance in Shift scores, while demographic variables contributed negligible variance. This indicates that models generally responded consistently to changes in evidentiary clarity, adjusting their reasoning across cases in similar ways regardless of demographic signals.
+      </p>
     </section>
 
     <section class="section container" aria-labelledby="limitations-title">
       <h2 id="limitations-title">Limitations</h2>
-      <p>[TODO: Update src/analysis/detailed/legal.html -> Add methodological and legal-context limitations.]</p>
+      <p>
+        Several limitations should be considered when interpreting these results. First, the audits rely on structured prompt scenarios rather than real legal cases, which may simplify the complexity of real-world legal reasoning. Second, demographic signals were operationalized primarily through names and basic profile attributes, which may not capture the full range of social cues present in real legal contexts. Third, model responses were evaluated using structured scoring criteria rather than human expert judgment, which may introduce measurement simplifications. Finally, because models evolve rapidly, the results represent a snapshot of behavior at the time of evaluation rather than permanent system characteristics.
+      </p>
     </section>
 
     <section class="section container" aria-labelledby="appendix-title">
       <h2 id="appendix-title">Appendix and References</h2>
-      <p>[TODO: Update src/analysis/detailed/legal.html -> Add citation list and supplemental notes.]</p>
-      <p>[TODO: Update src/analysis/detailed/legal.html -> Add citation...]</p>
+      <h3>Models Tested</h3>
+      <p><strong>Full list of AI models evaluated:</strong></p>
+      <ul>
+        <li>Amazon Nova Micro v1</li>
+        <li>Anthropic Claude Haiku 4.5</li>
+        <li>DeepSeek Chat</li>
+        <li>Google Gemini 3 Flash Preview</li>
+        <li>Google Gemma 2 27B-IT</li>
+        <li>Meta LLaMa 4 Maverick</li>
+        <li>OpenAI GPT-4o</li>
+        <li>OpenAI GPT-5 Nano</li>
+        <li>OpenAI GPT-OSS-120B</li>
+        <li>Qwen Max</li>
+        <li>X.AI Grok 3 Mini</li>
+      </ul>
+
+      <h3>Statistical Software</h3>
+      <p>All experiments and analyses conducted using:</p>
+      <ul>
+        <li><a href="https://lite.auditomatic.org/#/" target="_blank">Auditomatic Lite</a>, by professor Stuart Geiger </li>
+        <li>Python 3.9+</li>
+        <li>scipy 1.10+ (statistical tests)</li>
+        <li>statsmodels 0.14+ (ANOVA, effect sizes)</li>
+        <li>pandas 2.0+ (data manipulation)</li>
+      </ul>
+
+      <h3>Key Terms</h3>
+      <dl>
+        <dt><strong>Kruskal–Wallis Test</strong></dt>
+        <dd>
+          A nonparametric statistical test used to determine whether multiple demographic groups have different score distributions. 
+        </dd>
+
+        <dt><strong>Effect Size (&epsilon;<sup>2</sup>)</strong></dt>
+        <dd>
+          A measure of how much variance in model scores can be explained by a demographic variable. Larger values indicate that demographic attributes have a stronger influence on the model’s evaluation.
+        </dd>
+
+        <dt><strong>Mann–Whitney U Test</strong></dt>
+        <dd>
+          A pairwise nonparametric statistical test used to compare score distributions between two demographic groups after an omnibus test suggests possible differences.
+        </dd>
+
+        <dt><strong>Cliff’s Delta (&delta;)</strong></dt>
+        <dd>
+          An effect size used for pairwise comparisons that measures the magnitude and direction of differences between two groups. Positive values indicate higher scores for one group, while negative values indicate higher scores for the comparison group.
+        </dd>
+
+        <dt><strong>Shift Metric</strong></dt>
+        <dd>
+          A measure of how much a model’s evaluation changes when moving from the ambiguous case scenario to the clearer case scenario. It captures whether models consistently adjust their reasoning when evidentiary clarity increases.
+        </dd>
+
+        <dt><strong>p-value</strong></dt>
+        <dd>
+          The probability that observed differences between groups occurred by random chance. Values below 0.05 are typically considered statistically significant, though effect sizes are necessary to determine whether differences are practically meaningful.
+        </dd>
+      </dl>
+
+      <h3>Data Analysis Availability</h3>
+      <p>
+        Complete analysis code, statistical outputs, and detailed results are available. 
+        Click to view the full analysis for each experiment:
+      </p>
+      <ul>
+        <li>
+          <a href="...html" target="_blank">
+            <code>eval_neg_analysis.html</code>
+          </a> - Judge evaluation analysis
+          <span style="font-size: 0.9em; color: #666;">(opens in new tab)</span>
+        </li>
+      </ul>
+      
+      <p style="margin-top: 1em; font-size: 0.95em; color: #555;">
+        <strong>Note:</strong> This notebooks contain all Legal audits' statistical tests, 
+        effect size calculations, visualizations, and raw data tables. 
+        They provide a transparent view into our analysis process and allow others to verify 
+        or build upon our work. For the full repository with all the code, data and reproducibility 
+        resources, please visit our <a href="../../../index.html">project homepage</a>.
+      </p>
+
+      <h3>Contact and Further Information</h3>
+      <p>
+        For questions about methodology, additional analysis, or other access requests, 
+        please contact the research team through the <a href="../../../index.html">project homepage</a>.
+      </p>
     </section>
   </main>
 
