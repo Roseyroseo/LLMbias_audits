@@ -1,0 +1,998 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="LoremFlickr is a service that provides free placeholder images for web and print.">
+		<meta name="author" content="Babak Fakhamzadeh">
+		<link rel="icon" href="img/favicon.ico">
+
+		<!-- For non-Retina (@1× display) iPhone, iPod Touch, and Android 2.1+ devices: -->
+		<link rel="apple-touch-icon-precomposed" href="/img/logo.57.png"><!-- 57×57px -->
+		<!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≤ 6: -->
+		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/img/logo.72.png">
+		<!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≥ 7: -->
+		<link rel="apple-touch-icon-precomposed" sizes="76x76" href="/img/logo.76.png">
+		<!-- For iPhone with @2× display running iOS ≤ 6: -->
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/img/logo.114.png">
+		<!-- For iPhone with @2× display running iOS ≥ 7: -->
+		<link rel="apple-touch-icon-precomposed" sizes="120x120" href="/img/logo.120.png">
+		<!-- For iPad with @2× display running iOS ≤ 6: -->
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/img/logo.144.png">
+		<!-- For iPad with @2× display running iOS ≥ 7: -->
+		<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/img/logo.152.png">
+		<!-- For iPhone 6 Plus with @3× display: -->
+		<link rel="apple-touch-icon-precomposed" sizes="180x180" href="/img/logo.180.png">
+		<!-- For Chrome for Android: -->
+		<link rel="icon" sizes="192x192" href="/img/logo.192.png">
+		
+		<meta property="og:site_name" content="LoremFlickr.com"/> 
+		<meta property="fb:admins" content="591862024"/> 
+		<meta property="og:title" content="LoremFlickr.com"/> 
+		<meta property="og:image" content="https://loremflickr.com/img/logo.large.jpg"/> 
+		<meta property="og:url" content="https://loremflickr.com"/> 
+		<meta property="og:type" content="article" />
+		
+		<title>LoremFlickr: free placeholder images</title>
+		
+		<link href="https://fonts.googleapis.com/css?family=Ubuntu|Ubuntu+Condensed" rel="stylesheet">
+
+
+		
+
+ 		<link href="/min/?f=assets/css/bootstrap.min.css,assets/css/custom.css&v=1606150212" rel="stylesheet">
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/default.min.css">
+
+<!-- 		<link href="assets/css/bootstrap.min.css" rel="stylesheet">
+		<link href="assets/css/custom.css?v=1606150212" rel="stylesheet">
+-->
+
+<!--
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<script>
+		     (adsbygoogle = window.adsbygoogle || []).push({
+		          google_ad_client: "ca-pub-1885173889378683",
+		          enable_page_level_ads: true
+		     });
+		</script>
+-->
+
+		<!-- Matomo -->
+		<script type="text/javascript">
+		  var _paq = window._paq || [];
+		  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+		  _paq.push(['trackPageView']);
+		  _paq.push(['enableLinkTracking']);
+		  (function() {
+		    var u="//analytics.babasprojects.com/";
+		    _paq.push(['setTrackerUrl', u+'matomo.php']);
+		    _paq.push(['setSiteId', '7']);
+		    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+		    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+		  })();
+		</script>
+		<noscript><p><img src="//analytics.babasprojects.com/matomo.php?idsite=7&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+		<!-- End Matomo Code -->
+		
+		<!-- google ads -->
+		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1885173889378683"
+		 crossorigin="anonymous"></script>
+	</head>
+
+	<body>
+
+	<div class='headerWrap'>
+	    <div class="container">
+	    	<header class="blog-header py-2">
+	        	<div class="row flex-nowrap justify-content-between align-items-center">
+					<div class="col-8 pt-1">
+						<a href='/' class='blog-header-logo'><img src='assets/img/logo.small.alt.png' /> LoremFlickr</a>
+	        		</div>
+					<div class="col-4 d-flex justify-content-end align-items-center">
+						<a class="btn btn-sm btn-outline-light" href="https://github.com/MastaBaba/LoremFlickr-3">On GitHub</a>
+					</div>
+	        	</div>
+	    	</header>
+	    </div>
+	</div>
+
+	<div class="jumbotron p-0 text-white rounded">
+		<div class='jumbotronOverlay p-3 p-md-5'>
+			<div class='container'>
+	        	<div class="col-md-6 px-0">
+					<h1 class="display-4">Free placeholder images</h1>
+					<p class="lead my-3">LoremFlickr is a small PHP library for <strong>placeholder images</strong> for every case, web or print, on almost <strong>any subject</strong>, in <strong>any size</strong>. It's <strong>simple</strong> and <strong>free</strong>. Just put the custom url in your code like so:</p>
+					<pre><code class="html">&lt;img src="https://your-website.com/i/width-320/height-240" /&gt;</code></pre>
+					<p class="lead mb-0">Photos come from Flickr and have a Creative Commons license. The flavour of the license is shown in the top left of the image. The author is shown in the bottom left.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class='milestone bg-success text-white p-4 mb-4'>
+		<div class='container'>
+			<div class='row'>
+				<div class='col-sm-12'>
+					2774 million served
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <main role="main" class="container">
+    	<div class="row">
+        	<div class="col-md-7 blog-main">
+				<h4 class="pt-3 pb-1 border-bottom">LoremFlickr as a phoenix</h4>
+	        	<p>In late 2024, Flickr started enforcing fairly strict API usage limits, eventually blocking LoremFlickr entirely. Then, in late 2025, without reason, API restrictions were lifted again. Feel free to use our hosted version of LoremFlickr, but you might want to set up <a href="https://github.com/MastaBaba/LoremFlickr-3">the code</a> on your own machine.</p>
+				
+				<h4 class="pt-3 pb-1 border-bottom">How to use LoremFlickr</h4>
+				
+				<pre><code class="html"><a href='https://loremflickr.com/320/240'>https://loremflickr.com/320/240</a></code></pre>
+				<p>
+					A random picture of <strong>320 x 240 pixels</strong>. If not supplying any keyword, you'll get a picture matching the keyword <strong>kitten</strong>.
+				</p>
+
+				<pre><code class="html"><a href='https://loremflickr.com/320/240/dog'>https://loremflickr.com/320/240/dog</a></code></pre>
+				<p>
+					A random picture matching the keyword <strong>dog</strong>, of 320 x 240 pixels.
+				</p>
+
+				<pre><code class="html"><a href='https://loremflickr.com/g/320/240/paris'>https://loremflickr.com/g/320/240/paris</a></code></pre>
+				<p>
+					A random picture <strong>in gray</strong> matching the keyword paris, of 320 x 240 pixels. Besides <strong>g</strong>, you can try <strong>p</strong>, <strong>red</strong>, <strong>green</strong> and <strong>blue</strong>.
+				</p>
+
+				<pre><code class="html"><a href='https://loremflickr.com/320/240/brazil,rio'>https://loremflickr.com/320/240/brazil,rio</a></code></pre>
+				<p>
+					A random picture matching the keywords brazil <strong>or</strong> rio, of 320 x 240 pixels.
+				</p>
+
+				<pre><code class="html"><a href='https://loremflickr.com/320/240/paris,girl/all'>https://loremflickr.com/320/240/paris,girl/all</a></code></pre>
+				<p>
+					A random picture matching the keywords paris <strong>and</strong> girl, of 320 x 240 pixels.
+				</p>
+
+				<pre><code class="html"><a href='https://loremflickr.com/g/320/240/paris,girl/all'>https://loremflickr.com/g/320/240/paris,girl/all</a></code></pre>
+				<p>
+					A random picture in grey matching the keywords paris and girl, of 320 x 240 pixels.
+				</p>
+
+				<p>
+					If no matching photos are found, <a href='https://www.flickr.com/photos/mastababa/31544397892/'>a photo of Tomboli</a> is returned.
+				</p>
+
+				<h4 class="pt-3 pb-1 border-bottom">Lock it, lock it real good</h4>
+				<p>Take some control of the image that's displayed. Include a <code>lock</code> query string parameter and give it a value that's a positive integer. While our cache is not updated, and sometimes for longer, the same image will be returned by our server.</p>
+				<pre><code class="html">&lt;img src="https://loremflickr.com/320/240?lock=1" /&gt;
+&lt;img src="https://loremflickr.com/320/240?lock=212" /&gt;
+&lt;img src="https://loremflickr.com/320/240?lock=30976" /&gt;</code></pre>
+
+				<h4 class="pt-3 pb-1 border-bottom">Multiple images on the same page</h4>
+				<p>Your browser might cache the images when you request the same URL multiple times on the same page. You can resolve this by adding a meaningless querystring to the URL. So, for example...</p>
+				<pre><code class="html">&lt;img src="https://loremflickr.com/320/240?random=1" /&gt;
+&lt;img src="https://loremflickr.com/320/240?random=2" /&gt;
+&lt;img src="https://loremflickr.com/320/240?random=3" /&gt;</code></pre>
+
+				<!--
+				<h4 class="pt-3 pb-1 border-bottom">Free!?</h4>
+				<p>Yes, but, running this service does come with occasional headaches and bandwidth peaks. Feel free to chip in for the price of a beer.</p>
+
+				<center style='my-2'>
+					<a href='https://www.paypal.me/MastaBaba/2.5' class='btn btn-block btn-success'>PayPal.Me</a>
+				</center>
+				-->
+
+				<!--
+
+				<h4 class="pt-3 pb-1 border-bottom">JSON is my drug of choice</h4>
+				<pre><code class="html"><a href='https://loremflickr.com/json/g/320/240/paris,girl/all'>https://loremflickr.com/json/g/320/240/paris,girl/all</a></code></pre>
+				<p>
+					If you're planning to conquer the world and need some JSON to complement your nefarious plan, we've got you covered. Note that the image URL that is returned is cached and might not stay around for too long.
+				</p>
+
+				<h4 class="pt-3 pb-1 border-bottom">I'll have some RSS please</h4>
+				<pre><code class="html"><a href='https://loremflickr.com/rss/d/g/320/240/paris,girl/all'>https://loremflickr.com/rss/d/g/320/240/paris,girl/all</a></code></pre>
+				<p>
+					If you want a daily image on your favourite collection of keywords, here's an example of an RSS feed that will deliver a fresh photo to your RSS reader every day.<br />
+					The <strong>d</strong> parameter for periodic updates is currently the only one that's supported.
+				</p>
+				-->
+	        	
+				<h4 class="pt-3 pb-1 border-bottom">
+					Version 3
+				</h4>
+				
+				<p>This is a partial rewrite, giving you more power as to what images to look for. You can also set an hourly request limit, to stay within the Flickr API limits. Get it on <a href="https://github.com/MastaBaba/LoremFlickr-3">GitHub</a>, where you find usage instructions.</p>
+				
+				<h4 class="pt-3 pb-1 border-bottom">
+					Version 2
+          		</h4>
+				  
+				<p>This is the version that has been running on LoremFlickr for years, and will keep running for now. To roll your own version, to have control over what is shown, installation and usage instructions are now on <a href="https://github.com/MastaBaba/LoremFlickr-2">GitHub</a>.</p>
+				
+				<h4 class="pt-3 pb-1 border-bottom">Free!?</h4>
+				<p>Yes, still free. Feel free to chip in for the price of a cheap beer.</p>
+				
+				<center style='my-2'>
+					<a href='https://www.paypal.me/MastaBaba/2.5' class='btn btn-block btn-success'>PayPal.Me</a>
+				</center>
+
+
+        	</div><!-- /.blog-main -->
+
+        	<aside class="col-md-5 blog-sidebar">
+
+				<div class="p-3 mb-3">
+
+					<h4 class="pb-1 border-bottom">Updates</h4>
+
+					<ol class="list-unstyled mb-0">
+						<li class='mb-2'><strong>2026-02-26</strong><br />Flickr decided to unblock our API use. We're back in action.</li> 
+						<li class='mb-2'><strong>2025-06-04</strong><br />We've released version 3. More options, and taking into account Flickr API usage limits. But, you have to run the code on your own server. Details on <a href="https://github.com/MastaBaba/LoremFlickr-3">GitHub</a>.</li> 
+						<li class='mb-2'><strong>2025-05-23</strong><br />We've given up on Flickr providing access to LoremFlickr. Expect an improved version 3 of LoremFlickr soon, which will run on your own server, and will be more powerful. We cancelled the <strong>pro</strong> version of LoremFlickr.</li> 
+						<li class='mb-2'><strong>2025-03-11</strong><br />Flickr seems to have blocked the loremflickr.com domain. <a href="https://github.com/MastaBaba/LoremFlickr-2">Roll your own</a>.</li> 
+						<li class='mb-2'><strong>2024-12-04</strong><br />Flickr is rate-limiting API access, severely impacting LoremFlickr. See <a href="https://github.com/MastaBaba/LoremFlickr-2/issues/9">this</a> for updates.</li> 
+						<li class='mb-2'><strong>2020-11-23</strong><br />We moved servers. Problems? Let us know.</li> 
+						<li class='mb-2'><strong>2019-09-04</strong><br />LoremFlickr now comes in a <strong>pro</strong> flavour, with more power. <strike>Try it out</strike> for <strong>free</strong>.</li> 
+						<li class='mb-2'><strong>2019-01-16</strong><br />LoremFlickr now can also return JSON.</li> 
+						<li class='mb-2'><strong>2018-02-13</strong><br />Updated code available <a href='https://github.com/MastaBaba/LoremFlickr-2'>on GitHub</a>. <a href='https://github.com/MastaBaba/LoremFlickr'>Old code</a> is still on GitHub as well.</li> 
+						<li class='mb-2'><strong>2018-02-05</strong><br />Completely updated code.</li> 
+						<li class='mb-2'><strong>2017-11-14</strong><br />Added the <code>lock</code> query string parameter.</li> 
+						<li class='mb-2'><strong>2017-10-25</strong><br />Switching to a different server came with caching issues. This now seems to be resolved. If not, give us a shout.</li> 
+						<li class='mb-2'><strong>2017-02-02</strong><br /><a href='https://github.com/kodie'>Kodie Grantham</a> created <a href='https://github.com/kodie/loremflickr-node'>a LoremFlickr clone in node</a>.</li> 
+						<li class='mb-2'><strong>2017-01-17</strong><br />We've improved server response time. We're caching less, which means you should see images repeated less often.</li>
+						<li class='mb-2'><strong>2016-12-22</strong><br />To limit use of server resources, we're using more aggressive caching methods. You might see images repeated more often.</li>
+						<li class=''><strong>2016-09-15</strong><br />To limit use of server resources, served images will not be larger than 1280 pixels to a side.</li>
+					</ol>
+        		</div>
+
+				<div class="card mb-3">
+					<h4 class="card-header">Stats</h4>
+					<div class='stats-list'>
+						<table class="table table-sm">
+							<tbody>
+								<tr class='table-success'>
+									<th>Today</th>
+									<td class='number'>1.262.857</td>
+								</tr>
+								<tr class='table-success'>
+									<th>Total</th>
+									<td class='number'>2.774.357.378</td>
+								</tr>
+																		<tr>
+											<th>Mar 2026</th>
+											<td class='number'>
+												(estimate) 88.808.667											</td>
+										</tr>
+																				<tr>
+											<th>Feb 2026</th>
+											<td class='number'>
+												45.021.934											</td>
+										</tr>
+																				<tr>
+											<th>Jan 2026</th>
+											<td class='number'>
+												41.513.281											</td>
+										</tr>
+																				<tr>
+											<th>Dec 2025</th>
+											<td class='number'>
+												42.887.762											</td>
+										</tr>
+																				<tr>
+											<th>Nov 2025</th>
+											<td class='number'>
+												39.025.325											</td>
+										</tr>
+																				<tr>
+											<th>Oct 2025</th>
+											<td class='number'>
+												45.459.659											</td>
+										</tr>
+																				<tr>
+											<th>Sep 2025</th>
+											<td class='number'>
+												55.557.673											</td>
+										</tr>
+																				<tr>
+											<th>Aug 2025</th>
+											<td class='number'>
+												49.741.801											</td>
+										</tr>
+																				<tr>
+											<th>Jul 2025</th>
+											<td class='number'>
+												40.768.740											</td>
+										</tr>
+																				<tr>
+											<th>Jun 2025</th>
+											<td class='number'>
+												46.663.919											</td>
+										</tr>
+																				<tr>
+											<th>May 2025</th>
+											<td class='number'>
+												44.641.038											</td>
+										</tr>
+																				<tr>
+											<th>Apr 2025</th>
+											<td class='number'>
+												38.281.206											</td>
+										</tr>
+																				<tr>
+											<th>Mar 2025</th>
+											<td class='number'>
+												41.401.193											</td>
+										</tr>
+																				<tr>
+											<th>Feb 2025</th>
+											<td class='number'>
+												40.691.655											</td>
+										</tr>
+																				<tr>
+											<th>Jan 2025</th>
+											<td class='number'>
+												43.639.199											</td>
+										</tr>
+																				<tr>
+											<th>Dec 2024</th>
+											<td class='number'>
+												55.888.439											</td>
+										</tr>
+																				<tr>
+											<th>Nov 2024</th>
+											<td class='number'>
+												60.142.773											</td>
+										</tr>
+																				<tr>
+											<th>Oct 2024</th>
+											<td class='number'>
+												73.832.924											</td>
+										</tr>
+																				<tr>
+											<th>Sep 2024</th>
+											<td class='number'>
+												69.972.783											</td>
+										</tr>
+																				<tr>
+											<th>Aug 2024</th>
+											<td class='number'>
+												55.425.108											</td>
+										</tr>
+																				<tr>
+											<th>Jul 2024</th>
+											<td class='number'>
+												49.775.826											</td>
+										</tr>
+																				<tr>
+											<th>Jun 2024</th>
+											<td class='number'>
+												67.747.728											</td>
+										</tr>
+																				<tr>
+											<th>May 2024</th>
+											<td class='number'>
+												52.846.505											</td>
+										</tr>
+																				<tr>
+											<th>Apr 2024</th>
+											<td class='number'>
+												53.842.485											</td>
+										</tr>
+																				<tr>
+											<th>Mar 2024</th>
+											<td class='number'>
+												52.586.780											</td>
+										</tr>
+																				<tr>
+											<th>Feb 2024</th>
+											<td class='number'>
+												51.010.364											</td>
+										</tr>
+																				<tr>
+											<th>Jan 2024</th>
+											<td class='number'>
+												49.786.249											</td>
+										</tr>
+																				<tr>
+											<th>Dec 2023</th>
+											<td class='number'>
+												48.632.994											</td>
+										</tr>
+																				<tr>
+											<th>Nov 2023</th>
+											<td class='number'>
+												58.292.258											</td>
+										</tr>
+																				<tr>
+											<th>Oct 2023</th>
+											<td class='number'>
+												61.939.130											</td>
+										</tr>
+																				<tr>
+											<th>Sep 2023</th>
+											<td class='number'>
+												48.695.108											</td>
+										</tr>
+																				<tr>
+											<th>Aug 2023</th>
+											<td class='number'>
+												63.408.711											</td>
+										</tr>
+																				<tr>
+											<th>Jul 2023</th>
+											<td class='number'>
+												62.057.888											</td>
+										</tr>
+																				<tr>
+											<th>Jun 2023</th>
+											<td class='number'>
+												66.048.859											</td>
+										</tr>
+																				<tr>
+											<th>May 2023</th>
+											<td class='number'>
+												48.775.944											</td>
+										</tr>
+																				<tr>
+											<th>Apr 2023</th>
+											<td class='number'>
+												37.987.507											</td>
+										</tr>
+																				<tr>
+											<th>Mar 2023</th>
+											<td class='number'>
+												56.737.125											</td>
+										</tr>
+																				<tr>
+											<th>Feb 2023</th>
+											<td class='number'>
+												35.985.853											</td>
+										</tr>
+																				<tr>
+											<th>Jan 2023</th>
+											<td class='number'>
+												36.763.707											</td>
+										</tr>
+																				<tr>
+											<th>Dec 2022</th>
+											<td class='number'>
+												33.309.843											</td>
+										</tr>
+																				<tr>
+											<th>Nov 2022</th>
+											<td class='number'>
+												35.279.046											</td>
+										</tr>
+																				<tr>
+											<th>Oct 2022</th>
+											<td class='number'>
+												23.787.460											</td>
+										</tr>
+																				<tr>
+											<th>Sep 2022</th>
+											<td class='number'>
+												27.925.293											</td>
+										</tr>
+																				<tr>
+											<th>Aug 2022</th>
+											<td class='number'>
+												25.042.000											</td>
+										</tr>
+																				<tr>
+											<th>Jul 2022</th>
+											<td class='number'>
+												21.463.613											</td>
+										</tr>
+																				<tr>
+											<th>Jun 2022</th>
+											<td class='number'>
+												18.954.922											</td>
+										</tr>
+																				<tr>
+											<th>May 2022</th>
+											<td class='number'>
+												18.202.779											</td>
+										</tr>
+																				<tr>
+											<th>Apr 2022</th>
+											<td class='number'>
+												14.862.435											</td>
+										</tr>
+																				<tr>
+											<th>Mar 2022</th>
+											<td class='number'>
+												12.336.832											</td>
+										</tr>
+																				<tr>
+											<th>Feb 2022</th>
+											<td class='number'>
+												10.682.850											</td>
+										</tr>
+																				<tr>
+											<th>Jan 2022</th>
+											<td class='number'>
+												13.073.531											</td>
+										</tr>
+																				<tr>
+											<th>Dec 2021</th>
+											<td class='number'>
+												11.412.373											</td>
+										</tr>
+																				<tr>
+											<th>Nov 2021</th>
+											<td class='number'>
+												12.568.484											</td>
+										</tr>
+																				<tr>
+											<th>Oct 2021</th>
+											<td class='number'>
+												20.273.511											</td>
+										</tr>
+																				<tr>
+											<th>Sep 2021</th>
+											<td class='number'>
+												16.099.788											</td>
+										</tr>
+																				<tr>
+											<th>Aug 2021</th>
+											<td class='number'>
+												13.204.979											</td>
+										</tr>
+																				<tr>
+											<th>Jul 2021</th>
+											<td class='number'>
+												11.893.561											</td>
+										</tr>
+																				<tr>
+											<th>Jun 2021</th>
+											<td class='number'>
+												10.559.570											</td>
+										</tr>
+																				<tr>
+											<th>May 2021</th>
+											<td class='number'>
+												10.557.023											</td>
+										</tr>
+																				<tr>
+											<th>Apr 2021</th>
+											<td class='number'>
+												26.495.215											</td>
+										</tr>
+																				<tr>
+											<th>Mar 2021</th>
+											<td class='number'>
+												25.815.126											</td>
+										</tr>
+																				<tr>
+											<th>Feb 2021</th>
+											<td class='number'>
+												15.559.128											</td>
+										</tr>
+																				<tr>
+											<th>Jan 2021</th>
+											<td class='number'>
+												7.279.321											</td>
+										</tr>
+																				<tr>
+											<th>Dec 2020</th>
+											<td class='number'>
+												8.004.694											</td>
+										</tr>
+																				<tr>
+											<th>Nov 2020</th>
+											<td class='number'>
+												8.258.958											</td>
+										</tr>
+																				<tr>
+											<th>Oct 2020</th>
+											<td class='number'>
+												7.092.645											</td>
+										</tr>
+																				<tr>
+											<th>Sep 2020</th>
+											<td class='number'>
+												6.249.320											</td>
+										</tr>
+																				<tr>
+											<th>Aug 2020</th>
+											<td class='number'>
+												6.529.016											</td>
+										</tr>
+																				<tr>
+											<th>Jul 2020</th>
+											<td class='number'>
+												5.799.296											</td>
+										</tr>
+																				<tr>
+											<th>Jun 2020</th>
+											<td class='number'>
+												8.807.016											</td>
+										</tr>
+																				<tr>
+											<th>May 2020</th>
+											<td class='number'>
+												8.412.426											</td>
+										</tr>
+																				<tr>
+											<th>Apr 2020</th>
+											<td class='number'>
+												11.002.991											</td>
+										</tr>
+																				<tr>
+											<th>Mar 2020</th>
+											<td class='number'>
+												7.996.608											</td>
+										</tr>
+																				<tr>
+											<th>Feb 2020</th>
+											<td class='number'>
+												6.810.845											</td>
+										</tr>
+																				<tr>
+											<th>Jan 2020</th>
+											<td class='number'>
+												6.469.440											</td>
+										</tr>
+																				<tr>
+											<th>Dec 2019</th>
+											<td class='number'>
+												5.502.091											</td>
+										</tr>
+																				<tr>
+											<th>Nov 2019</th>
+											<td class='number'>
+												7.349.126											</td>
+										</tr>
+																				<tr>
+											<th>Oct 2019</th>
+											<td class='number'>
+												9.026.751											</td>
+										</tr>
+																				<tr>
+											<th>Sep 2019</th>
+											<td class='number'>
+												6.780.421											</td>
+										</tr>
+																				<tr>
+											<th>Aug 2019</th>
+											<td class='number'>
+												14.698.821											</td>
+										</tr>
+																				<tr>
+											<th>Jul 2019</th>
+											<td class='number'>
+												10.356.422											</td>
+										</tr>
+																				<tr>
+											<th>Jun 2019</th>
+											<td class='number'>
+												6.640.887											</td>
+										</tr>
+																				<tr>
+											<th>May 2019</th>
+											<td class='number'>
+												8.112.951											</td>
+										</tr>
+																				<tr>
+											<th>Apr 2019</th>
+											<td class='number'>
+												8.201.901											</td>
+										</tr>
+																				<tr>
+											<th>Mar 2019</th>
+											<td class='number'>
+												8.317.295											</td>
+										</tr>
+																				<tr>
+											<th>Feb 2019</th>
+											<td class='number'>
+												8.046.538											</td>
+										</tr>
+																				<tr>
+											<th>Jan 2019</th>
+											<td class='number'>
+												16.242.382											</td>
+										</tr>
+																				<tr>
+											<th>Dec 2018</th>
+											<td class='number'>
+												14.632.663											</td>
+										</tr>
+																				<tr>
+											<th>Nov 2018</th>
+											<td class='number'>
+												11.041.920											</td>
+										</tr>
+																				<tr>
+											<th>Oct 2018</th>
+											<td class='number'>
+												7.637.948											</td>
+										</tr>
+																				<tr>
+											<th>Sep 2018</th>
+											<td class='number'>
+												7.554.106											</td>
+										</tr>
+																				<tr>
+											<th>Aug 2018</th>
+											<td class='number'>
+												7.339.087											</td>
+										</tr>
+																				<tr>
+											<th>Jul 2018</th>
+											<td class='number'>
+												20.131.033											</td>
+										</tr>
+																				<tr>
+											<th>Jun 2018</th>
+											<td class='number'>
+												6.406.650											</td>
+										</tr>
+																				<tr>
+											<th>May 2018</th>
+											<td class='number'>
+												8.315.121											</td>
+										</tr>
+																				<tr>
+											<th>Apr 2018</th>
+											<td class='number'>
+												3.095.317											</td>
+										</tr>
+																				<tr>
+											<th>Mar 2018</th>
+											<td class='number'>
+												3.670.106											</td>
+										</tr>
+																				<tr>
+											<th>Feb 2018</th>
+											<td class='number'>
+												5.386.113											</td>
+										</tr>
+																				<tr>
+											<th>Jan 2018</th>
+											<td class='number'>
+												3.224.995											</td>
+										</tr>
+																				<tr>
+											<th>Dec 2017</th>
+											<td class='number'>
+												3.436.703											</td>
+										</tr>
+																				<tr>
+											<th>Nov 2017</th>
+											<td class='number'>
+												2.829.669											</td>
+										</tr>
+																				<tr>
+											<th>Oct 2017</th>
+											<td class='number'>
+												3.024.280											</td>
+										</tr>
+																				<tr>
+											<th>Sep 2017</th>
+											<td class='number'>
+												2.146.968											</td>
+										</tr>
+																				<tr>
+											<th>Aug 2017</th>
+											<td class='number'>
+												2.820.949											</td>
+										</tr>
+																				<tr>
+											<th>Jul 2017</th>
+											<td class='number'>
+												2.578.045											</td>
+										</tr>
+																				<tr>
+											<th>Jun 2017</th>
+											<td class='number'>
+												3.281.731											</td>
+										</tr>
+																				<tr>
+											<th>May 2017</th>
+											<td class='number'>
+												3.073.920											</td>
+										</tr>
+																				<tr>
+											<th>Apr 2017</th>
+											<td class='number'>
+												2.562.882											</td>
+										</tr>
+																				<tr>
+											<th>Mar 2017</th>
+											<td class='number'>
+												2.475.608											</td>
+										</tr>
+																				<tr>
+											<th>Feb 2017</th>
+											<td class='number'>
+												4.589.707											</td>
+										</tr>
+																				<tr>
+											<th>Jan 2017</th>
+											<td class='number'>
+												3.685.842											</td>
+										</tr>
+																				<tr>
+											<th>Dec 2016</th>
+											<td class='number'>
+												1.920.809											</td>
+										</tr>
+																				<tr>
+											<th>Nov 2016</th>
+											<td class='number'>
+												2.047.541											</td>
+										</tr>
+																				<tr>
+											<th>Oct 2016</th>
+											<td class='number'>
+												2.841.417											</td>
+										</tr>
+																				<tr>
+											<th>Sep 2016</th>
+											<td class='number'>
+												2.956.516											</td>
+										</tr>
+																				<tr>
+											<th>Aug 2016</th>
+											<td class='number'>
+												2.231.641											</td>
+										</tr>
+																				<tr>
+											<th>Jul 2016</th>
+											<td class='number'>
+												5.847.812											</td>
+										</tr>
+																				<tr>
+											<th>Jun 2016</th>
+											<td class='number'>
+												3.335.663											</td>
+										</tr>
+																				<tr>
+											<th>May 2016</th>
+											<td class='number'>
+												3.423.278											</td>
+										</tr>
+																				<tr>
+											<th>Apr 2016</th>
+											<td class='number'>
+												2.829.333											</td>
+										</tr>
+																				<tr>
+											<th>Mar 2016</th>
+											<td class='number'>
+												2.956.211											</td>
+										</tr>
+																				<tr>
+											<th>Feb 2016</th>
+											<td class='number'>
+												1.857.228											</td>
+										</tr>
+																				<tr>
+											<th>Jan 2016</th>
+											<td class='number'>
+												1.979.565											</td>
+										</tr>
+																				<tr>
+											<th>Dec 2015</th>
+											<td class='number'>
+												2.176.852											</td>
+										</tr>
+																				<tr>
+											<th>Nov 2015</th>
+											<td class='number'>
+												1.602.578											</td>
+										</tr>
+																				<tr>
+											<th>Oct 2015</th>
+											<td class='number'>
+												1.633.588											</td>
+										</tr>
+																				<tr>
+											<th>Sep 2015</th>
+											<td class='number'>
+												1.413.283											</td>
+										</tr>
+																				<tr>
+											<th>Aug 2015</th>
+											<td class='number'>
+												1.088.125											</td>
+										</tr>
+																				<tr>
+											<th>Jul 2015</th>
+											<td class='number'>
+												765.740											</td>
+										</tr>
+																				<tr>
+											<th>Jun 2015</th>
+											<td class='number'>
+												618.967											</td>
+										</tr>
+																				<tr>
+											<th>May 2015</th>
+											<td class='number'>
+												451.527											</td>
+										</tr>
+																				<tr>
+											<th>Apr 2015</th>
+											<td class='number'>
+												557.304											</td>
+										</tr>
+																				<tr>
+											<th>Mar 2015</th>
+											<td class='number'>
+												410.055											</td>
+										</tr>
+																				<tr>
+											<th>Feb 2015</th>
+											<td class='number'>
+												378.293											</td>
+										</tr>
+																				<tr>
+											<th>Jan 2015</th>
+											<td class='number'>
+												301.813											</td>
+										</tr>
+																				<tr>
+											<th>Dec 2014</th>
+											<td class='number'>
+												310.097											</td>
+										</tr>
+																				<tr>
+											<th>Nov 2014</th>
+											<td class='number'>
+												119.973											</td>
+										</tr>
+																				<tr>
+											<th>Oct 2014</th>
+											<td class='number'>
+												159.896											</td>
+										</tr>
+																				<tr>
+											<th>Sep 2014</th>
+											<td class='number'>
+												92.270											</td>
+										</tr>
+																				<tr>
+											<th>Aug 2014</th>
+											<td class='number'>
+												31.244											</td>
+										</tr>
+																				<tr>
+											<th>Jul 2014</th>
+											<td class='number'>
+												875											</td>
+										</tr>
+												
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div class="p-3 mb-3 bg-light rounded">
+					<h4 class="">About</h4>
+					<p class="mb-0">LoremFlickr is maintained by <a href='https://babakfakhamzadeh.com'>Babak Fakhamzadeh</a>.<br />Some background info <a href='http://babakfakhamzadeh.com/article/loremflickr-com'>here</a>.</p>
+        		</div>
+
+        	</aside><!-- /.blog-sidebar -->
+
+    	</div><!-- /.row -->
+
+    	</main><!-- /.container -->
+
+		<footer class="blog-footer">
+
+			<p><a href="https://babasprojects.com/pp.php">Privacy Notice</a></p>
+
+		</footer>
+
+		<script src="/min/?f=assets/js/jquery.3.3.1.js,assets/js/popper.min.js,assets/js/bootstrap.min.js,assets/js/highlight.8.6.js&v=1"></script>
+
+		<script>hljs.initHighlightingOnLoad();</script>		
+
+		<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=MastaBaba"></script>
+
+	</body>
+</html>
+

@@ -114,13 +114,31 @@ Chart behavior lives in:
 - `assets/js/charts/placeholderCharts.js`
 
 Current behavior:
-- If `window.d3` exists, a demo chart renders.
+- The site first tries to render a screenshot image from `assets/images/charts/`.
+- If no screenshot is found and `window.d3` exists, a demo chart renders.
 - Otherwise, a styled placeholder renders.
 
-To add real charts:
+To add screenshot-based charts:
+1. Put the image in the correct domain folder:
+- `assets/images/charts/education/`
+- `assets/images/charts/legal/`
+- `assets/images/charts/medical/`
+- `assets/images/charts/employment-screening/`
+2. Name the file exactly the same as the chart container ID.
+Examples:
+- `assets/images/charts/education/home-education-chart-1.png`
+- `assets/images/charts/legal/detailed-legal-chart-1.jpg`
+- `assets/images/charts/employment-screening/home-employment-chart-2.jpeg`
+3. Supported extensions are `.png`, `.jpg`, `.jpeg`, `.webp`, `.svg`.
+
+Important limitation:
+- The site cannot auto-list folder contents because it is static.
+- The file name convention is what makes the auto-rendering work.
+
+To add new chart containers:
 1. Keep/add chart container IDs in HTML output.
 2. Register IDs in `CHART_CONTAINER_IDS` in `assets/js/config.js`.
-3. Replace demo logic in `assets/js/charts/placeholderCharts.js`.
+3. If the domain prefix is new, add it to `CHART_IMAGE_FOLDERS` in `assets/js/config.js`.
 
 ## Naming Conventions
 

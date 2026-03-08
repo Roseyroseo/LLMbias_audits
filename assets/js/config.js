@@ -53,3 +53,12 @@ export const CHART_CONTAINER_IDS = [
   "detailed-medical-chart-1",
   "detailed-employment-chart-1"
 ];
+
+export const CHART_IMAGE_FOLDERS = {
+  education: "education",
+  legal: "legal",
+  medical: "medical",
+  employment: "employment-screening"
+};
+
+export const CHART_IMAGE_EXTENSIONS = ["png", "jpg", "jpeg", "webp", "svg"];

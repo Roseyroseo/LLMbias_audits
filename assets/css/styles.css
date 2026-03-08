@@ -346,6 +346,21 @@ main {
   margin: var(--space-2) 0;
 }
 
+.chart-figure {
+  width: 100%;
+  margin: 0;
+}
+
+.chart-screenshot {
+  display: block;
+  width: 100%;
+  max-height: 420px;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-soft);
+  background: #ffffff;
+}
+
 .chart-svg {
   width: 100%;
   height: auto;
