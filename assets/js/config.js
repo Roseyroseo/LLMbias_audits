@@ -5,7 +5,7 @@ export const SITE_CONFIG = {
   artifactLinks: {
     report: "https://example.com/report",
     code: "https://github.com/staeiou/auditlab_wi26",
-    poster: "../assets/poster/A09 Capstone Presentation Poster.pdf"
+    poster: "https://drive.google.com/file/d/1hvH-DsaZ1xEl89bYsMMJoyU2f1nmkkBv/view?usp=sharing"
   }
 };
 
