@@ -7,7 +7,7 @@ export const EDUCATION_KEY_CONTENT = {
   chartId: "key-education-chart-1",
   chartTitle: "Education Key Figure",
   bullets: [
-    "AI text detection tools falsely flagged authentic student writing as AI-generated at rates from 18% to 82%, with graduate students facing 28 percentage points higher false accusation rates than 7th graders for identical text.",
+    "AI text detection tools falsely flagged authentic student writing as AI-generated at rates from 18% to 82% for identical text.",
     "Teachers with Gender Studies degrees scored 9.92 points lower (78 vs. 88 out of 100) than colleagues with other majors despite having identical service records—the largest bias effect observed (η² = 0.742, p < 0.001).",
     "Models showed task-specific bias patterns: the same AI that appeared unbiased in reward evaluations exhibited massive bias (η² = 0.80) in layoff evaluations, making single-scenario testing insufficient to certify fairness.",
     "Even when evaluating definitively AI-generated text, detection rates varied by up to 25 percentage points based solely on demographic markers, proving models incorporate identity signals independent of actual content."
