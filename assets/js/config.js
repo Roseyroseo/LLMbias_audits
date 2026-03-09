@@ -3,7 +3,7 @@ export const SITE_CONFIG = {
   siteTitle: "Investigating LLM Bias",
   footerYearPlaceholder: "2026",
   artifactLinks: {
-    report: "https://example.com/report",
+    report: "https://drive.google.com/file/d/1Z5Fk7JS_fUfG7Hwgrl12gHJg4xULjoS6/view?usp=sharing",
     code: "https://github.com/staeiou/auditlab_wi26",
     poster: "https://drive.google.com/file/d/1hvH-DsaZ1xEl89bYsMMJoyU2f1nmkkBv/view?usp=sharing"
   }
