@@ -107,9 +107,9 @@
           Worse, these false positive rates varied significantly by student demographics:
         </p>
         <ul>
-          <li><strong>Graduate students</strong> were flagged 28 percentage points more often than 7th graders—even when submitting identical text</li>
+          <li><strong>Grade level assumptions:</strong> Student writing was falsely flagged as AI-generated with up to a 28 percentage point difference even though the content was identical</li>
           <li><strong>Gender disparities:</strong> Female students faced different detection rates than male students by up to 14 percentage points in some models</li>
-          <li>Students with certain <strong>ethnic names</strong> showed up to 18 points of variation in false positive rates</li>
+          <li><strong>Ethnicity-based variations:</strong> Students with certain <strong>ethnic names</strong> showed up to 18 points of variation in false positive rates</li>
         </ul>
       </div>
 
@@ -121,7 +121,7 @@
           retention—based solely on:
         </p>
         <ul>
-          <li><strong>Academic major:</strong> Teachers with Gender Studies degrees scored 9.92 points lower than colleagues in other fields in one model</li>
+          <li><strong>Academic major:</strong> Teachers with Gender Studies degrees scored 9.94 points lower than colleagues in other fields in one model</li>
           <li><strong>Name-based ethnicity:</strong> Up to 3.28 points of variation between ethnic groups</li>
           <li><strong>Inconsistent behavior:</strong> Models that showed bias in layoff evaluations showed zero variation in reward evaluations, and vice versa—suggesting task-specific safety mechanisms rather than genuine fairness</li>
         </ul>
@@ -160,10 +160,10 @@
           "There's this assumption that AI is neutral, objective, unbiased. 
           When schools start using these systems administrators might make decisions about teacher evaluations 
           or even layoffs, everyone just trusts that the AI is being fair. But who's checking? 
-          What if it's not? Teachers' are already stretched thin and our careers are 1on the line, 
-          and we're putting blind faith in systems we don't understand."
+          What if it's not? Teachers are already stretched thin and now our careers and students' futures are on the line; 
+          we're putting blind faith in systems we don't understand."
         </blockquote>
-        <p style="margin-top: 0.5em;"><em>— K-12 teacher, expressing concerns about trust in AI systems</em></p>
+        <p style="margin-top: 0.5em;"><em>— K-12 teacher, expressing concerns about blind trust in AI systems</em></p>
       </div>
 
       <p>
@@ -204,28 +204,28 @@
             <td><strong>AI Detection - False Positives</strong></td>
             <td>Detect if human-written text is AI-generated</td>
             <td>11 models</td>
-            <td>10,414</td>
+            <td>10,388</td>
             <td>Student name, gender, grade level (7th, 10th, college, graduate)</td>
           </tr>
           <tr>
             <td><strong>AI Detection - True Positives</strong></td>
             <td>Detect if AI-generated text is AI-generated</td>
             <td>11 models</td>
-            <td>10,365</td>
+            <td>10,384</td>
             <td>Student name, gender, grade level</td>
           </tr>
           <tr>
             <td><strong>Teacher Evaluation - Layoff</strong></td>
             <td>Score teachers for potential layoffs</td>
             <td>6 models (after excluding zero-variance)</td>
-            <td>16,721</td>
+            <td>16,743</td>
             <td>Teacher name, spoken language, degree major</td>
           </tr>
           <tr>
             <td><strong>Teacher Evaluation - Reward</strong></td>
             <td>Score teachers for rewards/recognition</td>
             <td>5 models (after excluding zero-variance)</td>
-            <td>14,869</td>
+            <td>13,716</td>
             <td>Teacher name, spoken language, degree major</td>
           </tr>
         </tbody>
@@ -244,28 +244,28 @@
         <tbody>
           <tr>
             <td><strong>Ethnicity</strong></td>
-            <td>Anglo, Arabic, Black, Chinese, Hispanic, Indian, Jewish, Control (neutral "A LASTNAME")</td>
-            <td>Embedded in last name as proxy for perceived ethnicity</td>
+            <td>Anglo, Arabic, Black, Chinese, Hispanic, Indian, Jewish, Control (neutral "MR MS LASTNAME")</td>
+            <td>Embedded in name as proxy for perceived ethnicity</td>
           </tr>
           <tr>
             <td><strong>Gender</strong></td>
-            <td>Man, Woman, Control (neutral "A LASTNAME")</td>
+            <td>Man, Woman, Control (neutral "A LAST NAME")</td>
             <td>Embedded in first name as proxy for perceived gender</td>
           </tr>
           <tr>
             <td><strong>Grade Level</strong></td>
             <td>7th grade, 10th grade, College, Graduate</td>
-            <td>Test if writing sophistication assumptions affect detection</td>
+            <td>Test if student writing sophistication assumptions affect identical text detection</td>
           </tr>
           <tr>
             <td><strong>Spoken Language</strong></td>
-            <td>Arabic, Chinese, Spanish (for teachers)</td>
+            <td>Arabic, Chinese, Spanish</td>
             <td>Test for bias against educators that speak a non-English language</td>
           </tr>
           <tr>
             <td><strong>Degree Major</strong></td>
             <td>Black Studies, Gender Studies, Liberal Arts, Psychology</td>
-            <td>Test for ideological or field-based bias</td>
+            <td>Test for ideological or field-based bias in teacher layoff & reward evaluations</td>
           </tr>
         </tbody>
       </table>
@@ -374,7 +374,7 @@
       <ul>
         <li><strong>Example:</strong> Amazon Nova Micro showed variation in layoff scoring but gave everyone 95/100 in reward scoring</li>
         <li><strong>Example:</strong> DeepSeek gave everyone 95/100 in layoff scoring but showed variation in reward scoring</li>
-        <li><strong>Implication:</strong> Models cannot be certified as "unbiased" based on testing in a single scenario</li>
+        <li><strong>Implication:</strong> Models cannot be certified as "unbiased" based on testing in a single scenario or frame of reference</li>
       </ul>
 
 
@@ -404,12 +404,12 @@
             <td>0-100 points</td>
           </tr>
           <tr>
-            <td><strong>False Positive Rate</strong></td>
+            <td><strong>False Positive Rate Score</strong></td>
             <td>How often human writing is incorrectly flagged as AI</td>
             <td>0-100%</td>
           </tr>
           <tr>
-            <td><strong>True Positive Rate</strong></td>
+            <td><strong>True Positive Rate Score</strong></td>
             <td>How often AI writing is correctly detected</td>
             <td>0-100%</td>
           </tr>
@@ -521,14 +521,14 @@
         
         <h4>The Evidence</h4>
         <p><strong>Anthropic Claude Haiku 4.5 - Layoff Evaluation Scores:</strong></p>
-        <div class="stat-box">Psychology: 87.92</div>
-        <div class="stat-box">Liberal Arts: 87.47</div>
-        <div class="stat-box">Black Studies: 87.28</div>
+        <div class="stat-box">Psychology: 87.94</div>
+        <div class="stat-box">Liberal Arts: 87.49</div>
+        <div class="stat-box">Black Studies: 87.30</div>
         <div class="stat-box" style="background-color: #ffe6e6;">Gender Studies: 78.00</div>
         
         <p style="margin-top: 1em;">
-          <strong>Difference:</strong> 9.92 points lower for Gender Studies<br>
-          <strong>Effect Size:</strong> η² = 0.742 (large—the largest effect we observed across all experiments)<br>
+          <strong>Difference:</strong> 9.94 points lower for Gender Studies<br>
+          <strong>Effect Size:</strong> η² = 0.745 (large—the largest effect we observed across all experiments)<br>
           <strong>Statistical Significance:</strong> p < 0.001
         </p>
         
@@ -580,9 +580,15 @@
               <td>"Safe" in negative frame (for this trial)</td>
             </tr>
             <tr>
+              <td>Meta LLaMa 4 Maverick</td>
+              <td>Small variation (SD=0.22)</td>
+              <td>All scored 95/100</td>
+              <td>"Safe" in positive frame (for this trial)</td>
+            </tr>
+            <tr>
               <td>GPT-4o</td>
               <td>All scored 95/100</td>
-              <td>Showed bias (η²=0.159)</td>
+              <td>Showed bias (η²=0.178)</td>
               <td>"Safe" in negative frame (for this trial)</td>
             </tr>
           </tbody>
@@ -623,18 +629,18 @@
           <tbody>
             <tr>
               <td>Control (neutral)</td>
-              <td>54.94%</td>
+              <td>46.91%</td>
               <td>—</td>
             </tr>
             <tr>
               <td>Male name</td>
-              <td>36.84%</td>
-              <td>-18.10 points</td>
+              <td>41.72%</td>
+              <td>-5.19 points</td>
             </tr>
             <tr>
               <td>Female name</td>
-              <td>29.88%</td>
-              <td><strong>-25.06 points</strong></td>
+              <td>31.34%</td>
+              <td><strong>-15.57 points</strong></td>
             </tr>
           </tbody>
         </table>
@@ -644,7 +650,22 @@
           The text was <em>guaranteed to be AI-generated</em>—we created it ourselves using GPT-4. 
           Yet the model's confidence in this fact changed dramatically based solely on whether we 
           attached a male or female name. This demonstrates that models might be using demographic 
-          information as a signal even when the ground truth is knowable from the text alone.
+          information as a signal even when the ground truth is knowable from the text alone.<br><br>
+
+          <strong>Note:</strong> This needs further testing, but based on our results, it appears 
+          that the control variable might be influencing the likelihood score by acting as a signal 
+          for a name placeholder. In this audit specifically, the control variable was "A LAST NAME," 
+          which may have been interpreted by the models as a generic placeholder rather than a neutral 
+          name, leading to higher detection rates compared to the other conditions. This highlights 
+          the importance of carefully designing control variables in bias testing, as they can 
+          unintentionally introduce signals that affect model behavior. <br><br>
+
+          Despite this potential confound, this finding underscores the need for rigorous bias 
+          testing across diverse scenarios, as harmful biases can manifest in unexpected ways. 
+          A well-meaning faculty member might try to use a neutral name to avoid bias, but if the 
+          model treats that as a signal for "generic" or "placeholder," it could actually lead to 
+          higher false positive rates for students, inadvertently harming them. This is a critical area 
+          for further research and testing.
         </p>
       </div>
 
@@ -670,26 +691,26 @@
             <tr>
               <td><strong>Claude Haiku 4.5</strong></td>
               <td>Major-based (teacher eval)</td>
-              <td>η² = 0.742 (large)</td>
+              <td>η² = 0.745 (large)</td>
               <td>#1 most biased (teacher eval)</td>
             </tr>
             <tr>
               <td><strong>LLaMa 4 Maverick</strong></td>
               <td>Grade level (AI detection)</td>
-              <td>η² = 0.549 (large)</td>
+              <td>η² = 0.581 (large)</td>
               <td>#1 most biased (False positive detection)</td>
             </tr>
             <tr>
               <td><strong>GPT-4o</strong></td>
               <td>Ethnicity & Gender (teacher eval)</td>
-              <td>η² = 0.077, 0.071 (medium)</td>
+              <td>η² = 0.102, 0.071 (medium)</td>
               <td>#1 in teacher eval (reward condition)</td>
             </tr>
             <tr>
               <td><strong>GPT-5 Nano</strong></td>
               <td>None detected (teacher eval)</td>
               <td>η² = 0.000</td>
-              <td>Least bias observed (but highly variable across iterations)</td>
+              <td>Least statistically significant bias observed (but highly variable across iterations)</td>
             </tr>
             <tr>
               <td><strong>DeepSeek Chat</strong></td>
@@ -706,7 +727,18 @@
           A model might show minimal bias in one scenario and massive bias in another. 
           Schools and districts making procurement decisions face an impossible choice: 
           they cannot know which model will be fairest for their specific use case without 
-          extensive independent testing, and even then, bias patterns may vary across contexts.
+          extensive independent testing, and even then, bias patterns may vary across contexts.<br><br>
+
+          In the case of GPT-5 Nano, while we observed no statistically significant bias in these 
+          specific teacher evaluation conditions, this does not necessarily mean the model is free 
+          of bias. If anything, the spread of scores was less consistent than other models, which 
+          could indicate that the model's behavior is more variable and less predictable. <br><br>
+
+          This highlights the importance of not relying solely on statistical significance when 
+          evaluating bias, as a lack of significant findings does not guarantee the absence of bias, 
+          especially if the model's outputs are highly variable. It underscores the need for ongoing 
+          monitoring and testing across multiple scenarios to ensure that AI systems are truly fair 
+          and equitable in their applications.
         </p>
       </div>
 
@@ -763,7 +795,6 @@
         <li>DeepSeek Chat</li>
         <li>Google Gemini 3 Flash Preview</li>
         <li>Google Gemma 2 27B-IT</li>
-        <li>Google Gemma 3 27B-IT</li>
         <li>Meta LLaMa 4 Maverick</li>
         <li>OpenAI GPT-4o</li>
         <li>OpenAI GPT-5 Nano</li>
