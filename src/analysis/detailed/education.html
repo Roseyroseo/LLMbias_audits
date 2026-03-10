@@ -205,28 +205,28 @@
             <td>Detect if human-written text is AI-generated</td>
             <td>11 models</td>
             <td>10,388</td>
-            <td>Student name, gender, grade level (7th, 10th, college, graduate)</td>
+            <td>Student name (gender & ethnicity embedded), grade level (7th, 10th, college, graduate)</td>
           </tr>
           <tr>
             <td><strong>AI Detection - True Positives</strong></td>
             <td>Detect if AI-generated text is AI-generated</td>
             <td>11 models</td>
             <td>10,384</td>
-            <td>Student name, gender, grade level</td>
+            <td>Student name (gender & ethnicity embedded), grade level (7th, 10th, college, graduate)</td>
           </tr>
           <tr>
             <td><strong>Teacher Evaluation - Layoff</strong></td>
             <td>Score teachers for potential layoffs</td>
             <td>6 models (after excluding zero-variance)</td>
             <td>16,743</td>
-            <td>Teacher name, spoken language, degree major</td>
+            <td>Teacher name (gender & ethnicity embedded), spoken language, degree major</td>
           </tr>
           <tr>
             <td><strong>Teacher Evaluation - Reward</strong></td>
             <td>Score teachers for rewards/recognition</td>
             <td>5 models (after excluding zero-variance)</td>
             <td>13,716</td>
-            <td>Teacher name, spoken language, degree major</td>
+            <td>Teacher name (gender & ethnicity embedded), spoken language, degree major</td>
           </tr>
         </tbody>
       </table>
@@ -245,7 +245,7 @@
           <tr>
             <td><strong>Ethnicity</strong></td>
             <td>Anglo, Arabic, Black, Chinese, Hispanic, Indian, Jewish, Control (neutral "MR MS LASTNAME")</td>
-            <td>Embedded in name as proxy for perceived ethnicity</td>
+            <td>Embedded in first and last name as proxy for perceived ethnicity</td>
           </tr>
           <tr>
             <td><strong>Gender</strong></td>
@@ -394,7 +394,7 @@
         </thead>
         <tbody>
           <tr>
-            <td><strong>AI Likelihood Score</strong></td>
+            <td><strong>AI Detection Likelihood Score</strong></td>
             <td>Probability (%) given by the model that text was AI-generated</td>
             <td>0-100%</td>
           </tr>
@@ -405,12 +405,12 @@
           </tr>
           <tr>
             <td><strong>False Positive Rate Score</strong></td>
-            <td>How often human writing is incorrectly flagged as AI</td>
+            <td>Human writing incorrectly flagged as AI (likelihood score for this context)</td>
             <td>0-100%</td>
           </tr>
           <tr>
             <td><strong>True Positive Rate Score</strong></td>
-            <td>How often AI writing is correctly detected</td>
+            <td>AI writing flagged correctly as such (likelihood score for this context)</td>
             <td>0-100%</td>
           </tr>
         </tbody>
@@ -492,7 +492,7 @@
           <tr>
             <td><strong>≥ 0.14</strong></td>
             <td>Large</td>
-            <td>10+ point differences—likely to change hiring/layoff decisions</td>
+            <td>10+ point differences—likely to significantly affect hiring/layoff decisions</td>
           </tr>
         </tbody>
       </table>
@@ -826,17 +826,17 @@
         <dt><strong>Effect Size (η²)</strong></dt>
         <dd>A measure of how much demographic factors explain score variation. Larger values mean demographics have more influence on outcomes.</dd>
         
-        <dt><strong>False Positive Rate</strong></dt>
-        <dd>The percentage of human-written text incorrectly identified as AI-generated.</dd>
+        <dt><strong>False Positive Score</strong></dt>
+        <dd>The likelihood score (as a % from 0-100) human-written text is incorrectly flagged as AI-generated.</dd>
         
-        <dt><strong>True Positive Rate</strong></dt>
-        <dd>The percentage of AI-generated text correctly identified as AI-generated.</dd>
+        <dt><strong>True Positive Score</strong></dt>
+        <dd>The likelihood score (as a % from 0-100) AI-generated text is correctly flagged as AI-generated.</dd>
         
         <dt><strong>p-value</strong></dt>
         <dd>Probability that observed differences occurred by random chance. Values < 0.05 are considered statistically significant; all our findings had p < 0.001.</dd>
         
         <dt><strong>Zero-variance model</strong></dt>
-        <dd>A model that assigns identical scores to all inputs, providing no information about potential bias.</dd>
+        <dd>A model that assigns identical scores to all inputs, providing no information about potential bias for that given scenario.</dd>
       </dl>
 
       <h3>Data Analysis Availability</h3>

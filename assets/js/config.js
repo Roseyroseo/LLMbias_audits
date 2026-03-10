@@ -1,6 +1,6 @@
 export const SITE_CONFIG = {
   teamName: "Bias Audit Action Team A09",
-  siteTitle: "Investigating LLM Bias",
+  siteTitle: "Human-Centered Bias Auditing of Large Language Models",
   footerYearPlaceholder: "2026",
   artifactLinks: {
     report: "https://drive.google.com/file/d/1Z5Fk7JS_fUfG7Hwgrl12gHJg4xULjoS6/view?usp=sharing",

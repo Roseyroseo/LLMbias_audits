@@ -34,8 +34,8 @@ export function renderHeroSection() {
     <section class="hero container" aria-labelledby="hero-title">
       <h1 id="hero-title">${SITE_CONFIG.siteTitle}</h1>
       <p>
-        We conduct a large-scale experimental audit of 11 leading large language models across education, legal services, employment, and mental health where 
-        algorithmic decisions directly affect people’s lives. Using controlled demographic perturbations, we isolate whether models produce statistically 
+        We conducted large-scale experimental audits of 11 leading large language models across education, legal services, employment, and mental health where 
+        algorithmic decisions directly affect people's lives. Using controlled demographic perturbations, we isolate whether models produce statistically 
         significant disparities when semantic content is held constant. Our findings reveal consistent, measurable bias across multiple domains, raising urgent concerns 
         about deploying LLMs in critical decision-making systems.
       </p>
