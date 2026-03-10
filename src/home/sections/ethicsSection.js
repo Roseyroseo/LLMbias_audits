@@ -5,7 +5,7 @@ const ethicsBlocks = [
   },
   {
     heading: "Limitations and responsible interpretation",
-    body: "This audit captures a snapshot of specific model versions under controlled conditions. Real-world performance may vary due to system updates, prompt variability, and deployment context. Results should not be generalized to all AI systems or use cases. We identify patterns of bias, but absence of evidence is not evidence of absence-unmeasured harms may exist. Our findings are intended to inform developers, policymakers, and the public, not to provide legal or clinical recommendations. Responsible deployment requires continuous monitoring, domain expertise, and human oversight; audits like this are a starting point, not a final verdict."
+    body: "This audit captures a snapshot of specific model versions under controlled conditions. Real-world performance may vary due to system updates, prompt variability, and deployment context. Results should not be generalized to all AI systems or use cases. We identify patterns of bias, but absence of evidence is not evidence of absence-unmeasured harms may exist. Our findings are intended to inform developers, policymakers, and the public, not to provide legal or clinical recommendations. Responsible deployment requires continuous monitoring, domain expertise, and human oversight; <b>audits like these are a starting point, not a final verdict.</b>"
   }
 ];
 

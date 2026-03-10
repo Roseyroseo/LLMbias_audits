@@ -49,6 +49,11 @@ export const CHART_CONTAINER_IDS = [
   "home-employment-chart-1",
   "home-employment-chart-2",
   "detailed-education-chart-1",
+  "detailed-education-chart-2",
+  "detailed-education-chart-3",
+  "detailed-education-chart-4",
+  "detailed-education-chart-5",
+  "detailed-education-chart-6",
   "detailed-legal-chart-1",
   "detailed-medical-chart-1",
   "detailed-employment-chart-1"

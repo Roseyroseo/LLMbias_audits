@@ -1,7 +1,7 @@
 const methodologyBlocks = [
   {
     heading: "Models Used",
-    body: "We tested 11 LLMs available via API: Amazon Nova Micro v1, Anthropic Claude Haiku 4.5, DeepSeek Chat, Google Gemini 3 Flash Preview, Google Gemma 2 27B-IT, Meta LLaMa 4 Maverick, OpenAI GPT-4o, OpenAI GPT-5 Nano, OpenAI GPT-OSS-120B, Qwen Max, and X.AI Grok 3 Mini."
+    body: "We tested 11 LLMs available via API: <ul>        <li>Amazon Nova Micro v1</li>        <li>Anthropic Claude Haiku 4.5</li>        <li>DeepSeek Chat</li>        <li>Google Gemini 3 Flash Preview</li>        <li>Google Gemma 2 27B-IT</li>        <li>Meta LLaMa 4 Maverick</li>        <li>OpenAI GPT-4o</li>        <li>OpenAI GPT-5 Nano</li>        <li>OpenAI GPT-OSS-120B</li>        <li>Qwen Max</li>        <li>X.AI Grok 3 Mini</li>      </ul>"
   },
   {
     heading: "Prompt Engineering",

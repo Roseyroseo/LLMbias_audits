@@ -505,7 +505,7 @@
       </div>
 
       <div id="detailed-education-chart-1" class="chart-placeholder" data-chart-title="Education Detailed Metric Overview"></div>
-      <p><em>Chart placeholder: Statistical test convergence or model comparison visualization will be inserted here.</em></p>
+      <p><em><b>Figure 1:</b> Bias effect size results with convergence check for false positive AI detection audit.</em></p>
     </section>
 
     <section class="section container" aria-labelledby="findings-title">
@@ -531,6 +531,9 @@
           <strong>Effect Size:</strong> η² = 0.745 (large—the largest effect we observed across all experiments)<br>
           <strong>Statistical Significance:</strong> p < 0.001
         </p>
+
+        <div id="detailed-education-chart-2" class="chart-placeholder" data-chart-title="Education Detailed Metric Overview"></div>
+        <p><em><b>Figure 2:</b> Bias effect size results with convergence check for teacher evaluation (layoff) audit.</em></p>
         
         <h4>What This Means</h4>
         <p>
@@ -654,7 +657,7 @@
 
           <strong>Note:</strong> This needs further testing, but based on our results, it appears 
           that the control variable might be influencing the likelihood score by acting as a signal 
-          for a name placeholder. In this audit specifically, the control variable was "A LAST NAME," 
+          for a name placeholder. In this audit specifically, the control variable was "A. LAST NAME," 
           which may have been interpreted by the models as a generic placeholder rather than a neutral 
           name, leading to higher detection rates compared to the other conditions. This highlights 
           the importance of carefully designing control variables in bias testing, as they can 
@@ -720,6 +723,11 @@
             </tr>
           </tbody>
         </table>
+
+        <div id="detailed-education-chart-3" class="chart-placeholder" data-chart-title="Education Detailed Metric Overview"></div>
+        <p><em><b>Figure 3:</b> Open AI Model Heatmaps for Ethnicity and Gender interactions in Teacher Evaluation (reward) audit. 
+          Even when using the same vendor, results will vary depending on model versions and contexts.</em></p>
+        
         
         <h4>What This Means</h4>
         <p>
@@ -832,6 +840,41 @@
       </dl>
 
       <h3>Data Analysis Availability</h3>
+
+      <h4>Interactive Data Exploration</h4>
+      <p>
+        We have created interactive ethnicity boxplots for each experiment, allowing users to visually explore the data 
+        themselves. You can pan, zoom in, and hover over data points to see exact values for each 
+        demographic group.
+      </p>
+      <ul>
+        <li>
+          <a href="../../../assets/iframe/education/eval_layoff_ethnicity_boxplot_interactive.html" target="_blank">
+            <code>eval_layoff</code>
+          </a> - Teacher layoff evaluation ethnicity boxplot
+          <span style="font-size: 0.9em; color: #666;">(opens in new tab)</span>
+        </li>
+        <li>
+          <a href="../../../assets/iframe/education/eval_reward_ethnicity_boxplot_interactive.html" target="_blank">
+            <code>eval_reward</code>
+          </a> - Teacher reward evaluation ethnicity boxplot
+          <span style="font-size: 0.9em; color: #666;">(opens in new tab)</span>
+        </li>
+        <li>
+          <a href="../../../assets/iframe/education/detec_false_ethnicity_boxplot_interactive.html" target="_blank">
+            <code>detec_false</code>
+          </a> - False positive AI detection ethnicity boxplot
+          <span style="font-size: 0.9em; color: #666;">(opens in new tab)</span>
+        </li>
+        <li>
+          <a href="../../../assets/iframe/education/detec_true_ethnicity_boxplot_interactive.html" target="_blank">
+            <code>detec_true</code>
+          </a> - True positive AI detection ethnicity boxplot
+          <span style="font-size: 0.9em; color: #666;">(opens in new tab)</span>
+        </li>
+        </ul>
+
+      <h4>Full Analysis Notebooks</h4>
       <p>
         Complete analysis code, statistical outputs, and detailed results are available. 
         Click to view the full analysis for each experiment:

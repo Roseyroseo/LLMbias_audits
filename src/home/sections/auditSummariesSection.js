@@ -58,16 +58,15 @@ function renderAuditCard(audit) {
 
       <div class="summary-block">
         <h4>Most Important Findings</h4>
-        <p>[TODO: Update ${audit.keyContent.keyFilePath} -> These bullets are auto-synced from this source file.]</p>
+        
         <ul class="list-tight">
           ${bulletsMarkup}
         </ul>
-        <p><strong>Source of truth:</strong> <code>${audit.keyContent.keyFilePath}</code></p>
+        <p><strong>Implications:</strong> ${audit.keyContent.implications}</p>
       </div>
 
       <div class="summary-block">
         <h4>Supporting Visuals</h4>
-        <p>[TODO: Update assets/js/charts/placeholderCharts.js -> Replace placeholders with real charts for this audit.]</p>
         <div class="chart-grid">
           ${chartsMarkup}
         </div>
