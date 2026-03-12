@@ -1,23 +1,33 @@
-const ethicsBlocks = [
-  {
-    heading: "Risks of deployment",
-    body: "Deploying LLMs without rigorous audits creates pathways to discrimination and harm. When adopted widely, these systems risk encoding discrimination into infrastructure at scale. And could impact the well-being of millions of people. Thus, thorough auditing and benchmarking is vital in the deployment of real-world LLM and agentic systems."
-  },
-  {
-    heading: "Limitations and responsible interpretation",
-    body: "This audit captures a snapshot of specific model versions under controlled conditions. Real-world performance may vary due to system updates, prompt variability, and deployment context. Results should not be generalized to all AI systems or use cases. We identify patterns of bias, but absence of evidence is not evidence of absence-unmeasured harms may exist. Our findings are intended to inform developers, policymakers, and the public, not to provide legal or clinical recommendations. Responsible deployment requires continuous monitoring, domain expertise, and human oversight; <b>audits like these are a starting point, not a final verdict.</b>"
-  }
-];
-
 export function renderEthicsSection() {
-  const blocksMarkup = ethicsBlocks
-    .map((block) => `<h3>${block.heading}</h3><p>${block.body}</p>`)
-    .join("");
-
   return `
     <section class="section container" id="ethics" aria-labelledby="ethics-title">
-      <h2 id="ethics-title">Ethics and Real-World Importance</h2>
-      ${blocksMarkup}
+      <h2 id="ethics-title">Implications, Limitations, and Next Steps</h2>
+      <div class="info-grid">
+        <article class="info-card">
+          <h3>Why This Matters</h3>
+          <p>
+            Even modest score shifts can matter when the output affects academic misconduct claims, candidate filtering, teacher layoffs, legal strategy, or intake triage. That is why these systems need to be audited before people rely on them.
+          </p>
+        </article>
+        <article class="info-card">
+          <h3>What This Audit Cannot Show</h3>
+          <p>
+            These results come from specific model versions under controlled prompts. They do not show how every downstream product will behave, and they are not legal, medical, or clinical advice. A weak result in one audit also does not mean the risk is gone elsewhere.
+          </p>
+        </article>
+        <article class="info-card">
+          <h3>How to Read the Evidence</h3>
+          <p>
+            Large effect sizes and repeated gaps are warning signs. Smaller effects need to be read alongside sample size, task framing, and model differences before anyone calls a system safe. The detailed pages provide the evidence needed for that judgment.
+          </p>
+        </article>
+        <article class="info-card">
+          <h3>What Teams Should Do Next</h3>
+          <p>
+            Teams thinking about real-world use should run model-specific audits, expand demographic coverage, monitor updates over time, and keep humans accountable for high-stakes decisions. This work needs to continue because model behavior changes across tasks and product versions.
+          </p>
+        </article>
+      </div>
     </section>
   `;
 }

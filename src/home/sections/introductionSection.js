@@ -1,27 +1,36 @@
-const introBlocks = [
-  {
-    heading: "Motivation",
-    body: "Previous algorithmic failures (e.g., biased resume screeners, facial recognition errors, etc.) serve as a warning for the widespread adoption of LLMs. Unlike static algorithms, modern LLMs are versatile and opaque. Unfair and discriminative models can be deployed across hiring, education, and healthcare with minimal adaptation. This project is motivated by the urgent need to audit these models before they become deeply embedded in critical infrastructure. We investigate whether these systems discriminates across demographic groups, or if they inadvertently penalize marginalized communities."
-  },
-  {
-    heading: "Scope",
-    body: "This audit examines 11 LLM models (e.g., Claude 4.5, GPT-4, Gemini-3, etc.) available via API as of Quarter 1 2026. The scope is text-based interactions within five domains: academic integrity, legal document analysis, resume screening, mental health triage, and teacher service evaluation. Bias is defined as statistically significant disparities in outcomes when input text is varied only by demographic markers while controlling for semantic content."
-  },
-  {
-    heading: "Overview of Audits",
-    body: "We selected Education, Legal, Employment, and Mental Health because they represent high-stakes environments where algorithmic decision could have a high impact. Education audit is a AI-generated text detection likelihood audit with paired false and true writing conditions; employment audit is a hiring-screening fairness audit under demographic perturbations; legal audit is a judge-evaluation fairness audit with controlled demographic/context variables; mental health audit is a mental-health triage fairness audit on urgency and triage-level outputs; service evaluation audit is teacher service evaluation audit with two framings: layoffs and reward."
-  }
-];
-
 export function renderIntroductionSection() {
-  const blocksMarkup = introBlocks
-    .map((block) => `<h3>${block.heading}</h3><p>${block.body}</p>`)
-    .join("");
-
   return `
-    <section class="section container" id="introduction" aria-labelledby="intro-title">
-      <h2 id="intro-title">Introduction</h2>
-      ${blocksMarkup}
+    <section class="section container" id="problem" aria-labelledby="intro-title">
+      <h2 id="intro-title">Problem, Stakeholders, and Scope</h2>
+      <p class="section-intro">
+        Earlier failures in hiring, surveillance, and risk-scoring systems showed what can happen when a model is treated as objective before anyone audits it. LLMs raise that risk because the same model can be reused across many settings, often with little oversight and little visibility into why its output changes.
+      </p>
+      <div class="info-grid">
+        <article class="info-card">
+          <h3>Who Should Care</h3>
+          <p>
+            This project is for people who need to judge whether LLM-assisted decisions are trustworthy: instructors and school leaders, hiring teams, legal-service organizations, mental-health triage teams, and outside reviewers.
+          </p>
+        </article>
+        <article class="info-card">
+          <h3>What We Audited</h3>
+          <p>
+            We tested 11 API-accessible LLMs on high-stakes text tasks. This site focuses on four domains: education, legal support, employment screening, and mental-health triage. Teacher evaluation results also appear under education because they came from the same interviews and fairness concerns.
+          </p>
+        </article>
+        <article class="info-card">
+          <h3>What Counts as Bias Here</h3>
+          <p>
+            We count it as bias when scores, labels, or recommendations change after demographic cues change while the case itself stays the same. We report effect sizes alongside significance tests so readers can tell the difference between a meaningful shift and a tiny effect in a large dataset.
+          </p>
+        </article>
+        <article class="info-card">
+          <h3>Scope Boundaries</h3>
+          <p>
+            We audited controlled prompts and model outputs, not full real-world deployments. We are not estimating legal liability, clinical validity, or exact downstream harm. We are showing where demographic sensitivity appears, where it looks limited, and what still remains unclear.
+          </p>
+        </article>
+      </div>
     </section>
   `;
 }

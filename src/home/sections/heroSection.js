@@ -14,7 +14,7 @@ function iconSvg(type) {
 
 const artifacts = [
   { key: "report", label: "Report" },
-  { key: "code", label: "Code" },
+  { key: "code", label: "Repository" },
   { key: "poster", label: "Poster" }
 ];
 
@@ -32,13 +32,37 @@ export function renderHeroSection() {
 
   return `
     <section class="hero container" aria-labelledby="hero-title">
+      <p class="eyebrow">DSC 180B Capstone Project</p>
       <h1 id="hero-title">${SITE_CONFIG.siteTitle}</h1>
-      <p>
-        We conducted large-scale experimental audits of 11 leading large language models across education, legal services, employment, and mental health where 
-        algorithmic decisions directly affect people's lives. Using controlled demographic perturbations, we isolate whether models produce statistically 
-        significant disparities when semantic content is held constant. Our findings reveal consistent, measurable bias across multiple domains, raising urgent concerns 
-        about deploying LLMs in critical decision-making systems.
+      <p class="hero-lead">
+        We audited 11 widely used large language models to ask a simple question: when the same essay, resume, legal case, or patient report stays the same, do decisions change when demographic cues change? Across education, legal support, employment screening, and mental-health triage, we found that the answer depends a lot on the task and the model. The largest gaps showed up in settings tied to sanctions, screening, and personnel decisions.
       </p>
+      <p class="hero-supporting-copy">
+        This matters to instructors, hiring teams, legal aid groups, clinicians, and product teams deciding whether LLM outputs are safe enough to use in real decisions. We are not trying to label every model as fair or biased. We want to show where disparities appear, where they seem limited, and how strong the evidence is.
+      </p>
+      <div class="hero-metrics" aria-label="Project highlights">
+        <article class="metric-card">
+          <h2>Problem</h2>
+          <p>LLMs are starting to shape decisions that affect students, job seekers, patients, and people looking for legal help.</p>
+        </article>
+        <article class="metric-card">
+          <h2>Approach</h2>
+          <p>We kept the case text the same and changed demographic cues such as names, gender, language, and disability status.</p>
+        </article>
+        <article class="metric-card">
+          <h2>Results</h2>
+          <p>Education and employment showed the clearest disparities. Legal and mental-health results were more mixed and depended more on the model.</p>
+        </article>
+        <article class="metric-card">
+          <h2>Scope</h2>
+          <p>We measured output differences in controlled prompts. We did not estimate downstream harms or certify any model as safe to deploy.</p>
+        </article>
+      </div>
+      <div class="hero-actions" aria-label="Quick links">
+        <a class="button-link" href="#problem">See the problem</a>
+        <a class="button-link" href="#results">Jump to results</a>
+        <a class="button-link secondary" href="#method">Review the method</a>
+      </div>
       <div class="icon-links" aria-label="Project artifacts">
         ${linksMarkup}
       </div>

@@ -14,23 +14,23 @@
     <section class="section container" aria-labelledby="page-title">
       <h1 id="page-title">Legal Audit</h1>
       <p>
-        In the legal audit, we evaluate whether large language models change the quality of legal support based on demographic signals that should be irrelevant to the legal merits. 
+        In the legal audit, we test whether large language models change the quality of legal support when demographic cues change even though the legal merits do not. 
       </p>
       <p>
-        The audit frames the model as an attorney assessing how a judge is likely to behave across core courtroom dimensions such as credibility filtering, evidence evaluation, procedural strictness, and risk posture, again emphasizing that demographic attributes should not influence scoring. 
+        The audit frames the model as an attorney estimating how a judge is likely to behave on core courtroom dimensions such as credibility, evidence evaluation, procedural strictness, and risk posture. Demographic attributes should not affect those scores. 
       </p>
       <p>
-        These settings reflect realistic legal support contexts in which biased shifts perceived judicial behavior could meaningfully affect case strategy and the overall quality of legal representation.
+        This reflects a realistic legal support setting where biased shifts in perceived judicial behavior could affect case strategy and the quality of representation.
       </p>
     </section>
 
     <section class="section container" aria-labelledby="exec-summary-title">
       <h2 id="exec-summary-title">Executive Summary</h2>
       <p>
-        The legal audits evaluate whether large language models alter legal guidance or judicial reasoning assessments when demographic signals are varied while the underlying legal facts remain identical. Across the judge evaluation audit, model identity was the dominant source of variation in outputs, explaining up to 70.2% of variance in the responsiveness metric (Shift) and substantial variance in case scoring behavior. In contrast, demographic variables such as ethnicity, gender, immigration status, and age produced extremely small omnibus effects, typically with &epsilon;<sup>2</sup> &le; 0.002.
+        We tested whether legal guidance or judicial reasoning assessments changed when demographic cues changed while the legal facts stayed the same. In the judge evaluation audit, model identity was the main source of variation in outputs. It explained up to 70.2% of variance in the responsiveness metric (Shift) and a large share of the variation in case scores. By contrast, ethnicity, gender, immigration status, and age had very small overall effects, usually with &epsilon;<sup>2</sup> &le; 0.002.
       </p>
       <p>
-        Although demographic effects were minimal overall, several localized pairwise contrasts appeared within individual models. For example, Claude 3.5 showed moderate ethnicity effects in credibility and procedural reasoning scores, while Gemma 2 27B produced large pairwise contrasts in Case 1 risk assessments (Cliff&rsquo;s &delta; up to 0.55). These results suggest that differences in legal reasoning behavior are primarily driven by model architecture rather than consistent demographic bias, though localized disparities remain possible in individual systems.
+        Overall demographic effects were small, but several model-specific contrasts still appeared. For example, Claude 3.5 showed moderate ethnicity effects in credibility and procedural reasoning scores, while Gemma 2 27B produced large pairwise contrasts in Case 1 risk assessments (Cliff&rsquo;s &delta; up to 0.55). These results suggest that legal reasoning differences are driven more by the model than by a broad demographic pattern, though some individual models still show disparities.
       </p>
     </section>
 
@@ -410,19 +410,19 @@
         Cliff’s delta (&delta;) was used as the effect size for Mann&ndash;Whitney comparisons because it provides a distribution-free measure of the magnitude and direction of differences between two ordinal groups.
       </p>
 
-      <div class="figure">
-      <img src="judge_kruskal_wallis_case_1.png" alt="judge_kruskal_wallis_case_1" width="500" height="600">
-        <p class="caption">Case 1 Kruskal-Wallis Effect Sizes by Model</p>
-      </div>
+      <figure class="figure">
+        <img src="judge_kruskal_wallis_case_1.png" alt="Heatmap summarizing Case 1 Kruskal-Wallis effect sizes by model and demographic factor" width="500" height="600">
+        <figcaption class="caption">Case 1 Kruskal-Wallis effect sizes by model and demographic factor.</figcaption>
+      </figure>
 
       <p>
         Because the outcome variables are ordinal ratings, nonparametric statistical methods were used. Kruskal&ndash;Wallis tests evaluated omnibus differences across demographic groups, with epsilon squared (&epsilon;<sup>2</sup>) reported as an effect size representing the proportion of variance explained. When omnibus results suggested potential group differences, pairwise comparisons were conducted using the Mann&ndash;Whitney U test with Holm correction for multiple comparisons. Cliff&rsquo;s delta (&delta;) was reported as the pairwise effect size to quantify the magnitude and direction of group differences.
       </p>
 
-      <div class="figure">
-      <img src="judge_mann_whitney_pairwise.png" alt="Mann-Whitney Pairwise Comparisons across models" width="500" height="600">
-        <p class="caption">Model Wise Mann-Whitney Pairwise Comparisons of Demographic Variables.</p>
-      </div>
+      <figure class="figure">
+        <img src="judge_mann_whitney_pairwise.png" alt="Heatmap of Mann-Whitney pairwise comparison effect sizes across models" width="500" height="600">
+        <figcaption class="caption">Model-wise Mann-Whitney pairwise comparisons of demographic variables.</figcaption>
+      </figure>
 
       <p>
         The visualization above summarizes the magnitude of demographic effects across models and scoring dimensions.
@@ -476,7 +476,7 @@
       <h3>Statistical Software</h3>
       <p>All experiments and analyses conducted using:</p>
       <ul>
-        <li><a href="https://lite.auditomatic.org/#/" target="_blank">Auditomatic Lite</a>, by professor Stuart Geiger </li>
+        <li><a href="https://lite.auditomatic.org/#/" target="_blank" rel="noopener noreferrer">Auditomatic Lite</a>, by professor Stuart Geiger </li>
         <li>Python 3.9+</li>
         <li>scipy 1.10+ (statistical tests)</li>
         <li>statsmodels 0.14+ (ANOVA, effect sizes)</li>
@@ -523,7 +523,7 @@
       </p>
       <ul>
         <li>
-          <a href="\assets\notebooks\judge_evaluation_notebook.html" target="_blank">
+          <a href="../../../assets/notebooks/judge_evaluation_notebook.html" target="_blank" rel="noopener noreferrer">
             <code>judge_evaluation_notebook</code>
           </a> - Judge evaluation analysis
           <span style="font-size: 0.9em; color: #666;">(opens in new tab)</span>

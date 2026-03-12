@@ -14,57 +14,47 @@
     <section class="section container" aria-labelledby="page-title">
       <h1 id="page-title">Employment Screening Audit</h1>
       <p>
-        Hiring teams increasingly use AI tools for resume screening and candidate ranking. While these tools promise 
-        efficiency, stakeholders (job seekers and HR professionals) worry that demographic cues - such as perceived
-        race/ethnicity, gender, or disability status - could influence screening decisions even when qualifications are identical. 
-        This page documents our employment screening-domain analysis and highlights when demographic effects appear negligible in
-        aggregate yet substantial at the individual-model level.
+        Hiring teams increasingly use AI tools for resume screening and candidate ranking. Stakeholders we spoke with, including job seekers and HR professionals, worried that demographic cues such as perceived race, gender, or disability status could affect screening decisions even when qualifications stay the same. This page explains our employment screening analysis and shows how small pooled effects can hide larger model-level gaps.
       </p>
     </section>
 
     <section class="section container" aria-labelledby="exec-summary-title">
       <h2 id="exec-summary-title">Executive Summary</h2>
-      <p>We audited 11 LLMs on an employment screening task with two candidates: Applicant A (more qualified) and Applicant B 
-        (less qualified). We held qualifications constant and varied demographic markers (race, gender, disability) to test for 
-        demographic sensitivity in model outputs.
-        
-        For Applicant A recommendation score (a_rec_score), our results diverge depending on whether we aggregate across models or
-        analyze each model separately:</p>
-
-        <ul>
-            <li>Pooled across all models, demographic factors explained negligible variance in a_rec_score (largest pooled interaction partial η² ≈ 0.0017), 
-              and no interactions were statistically significant.</li>
-            <li>Per-model analyses, however, revealed large heterogeneity: the maximum partial η² observed within each model ranged from 0.150 to 0.404, 
-              with many of the largest effects appearing as intersectional interactions (e.g., race x gender, gender x disability, 
-              race x disability). This shows that model choice changes observed bias patterns, even when the pooled “overall” result appears neutral.</li>
-          
-         </ul>
-        This implies that aggregated model reuslts mask substantial demographic effects at the individual model level, underscoring the importance of analyzing both pooled and per-model results in high-stakes audits.
+      <p>
+        We audited 11 LLMs on an employment screening task with two candidates: Applicant A (more qualified) and Applicant B (less qualified). Qualifications were held constant while demographic markers such as race, gender, and disability status changed.
+      </p>
+      <ul>
+        <li>Pooled across all models, demographic factors explained negligible variance in <code>a_rec_score</code> (largest pooled interaction partial η² ≈ 0.0017), and no pooled interactions were statistically significant.</li>
+        <li>Per-model analyses revealed a very different picture: maximum partial η² values ranged from 0.150 to 0.404, with many of the largest effects appearing in interaction terms such as race x gender and gender x disability.</li>
+      </ul>
+      <p>
+        The key takeaway is that aggregated results can mask meaningful disparities at the model level. For hiring use cases, model choice matters more than the pooled average suggests.
+      </p>
     </section>
 
     <section class="section container" aria-labelledby="dataset-title">
       <h2 id="dataset-title">Dataset and Prompts</h2>
       <h3>Scenario Design</h3>
-      <p>We designed a controlled resume screening scenario with two candidates: Applicant A (more qualified) and Applicant B (less qualified). We held qualifications constant and varied demographic markers (race, gender, disability) to test for demographic sensitivity in model outputs for the same role:
-        <ul>
-          <li>Applicant A: 5 years of software development experience, proficiency in Python, JavaScript, SQL, and GitHub. Built internal tools, and improved system performance.</li>
-          <li>Applicant B: 1 year of software development experience. Previously built personal website using HTML, CSS and JavaScript.</li>
-        </ul>
+      <p>
+        We designed a controlled resume screening scenario with two candidates for the same software developer role. Applicant A was intentionally more qualified than Applicant B so the task had a clear baseline before demographic cues were introduced.
       </p>
+      <ul>
+        <li>Applicant A: 5 years of software development experience, proficiency in Python, JavaScript, SQL, and GitHub, plus experience building internal tools and improving system performance.</li>
+        <li>Applicant B: 1 year of software-related experience and a personal website built with HTML, CSS, and JavaScript.</li>
+      </ul>
       <p>Applicant A was intentionally constructed to be more qualified than Applicant B. The following factors were held constant across all conditions:</p>
       <ul>
         <li>Job title: Software Developer</li>
         <li>Candidate qualifications</li> 
       </ul>
-      We varied only race, gender, and disability status.
+      <p>We varied only race, gender, and disability status.</p>
       
 
       <section class="prompt-block">
   <h3>Prompt Template</h3>
   <p>
     We used a fixed <strong>system prompt</strong> and a templated <strong>user prompt</strong>.
-    Demographic attributes (e.g., <code>{{gender}}</code>) are placeholders used only for fairness auditing. This prompt was 
-    designed and refined upon conversations with HR professionals to reflect realistic screening instructions.
+    Demographic attributes (e.g., <code>{{gender}}</code>) are included only for fairness auditing. We refined the prompt through conversations with HR professionals so it would match a realistic screening task.
   </p>
 
 
@@ -171,71 +161,47 @@ The applicant has 1 year of software-related experience...
 
     <section class="section container" aria-labelledby="metrics-title">
       <h2 id="metrics-title">Metrics and Statistical Tests</h2>
-      <h3> Metrics</h3>
-      <p> We extracted:
-        <ul> 
-          <li> 
-            Recommendation score (numeric): a_rec_score, b_rec_score (0-100 scale, higher = stronger recommendation)
-          </li>
-          <li> 
-            Recommendation level (categorical): a_rec_level, b_rec_level ("Strongly Recommend", "Consider", "Reject")
-          </li>
-        </ul>
-      </p>
-      <h3> Statistical Tests</h3>
+      <h3>Metrics</h3>
+      <ul> 
+        <li>Recommendation score (numeric): <code>a_rec_score</code>, <code>b_rec_score</code> on a 0-100 scale where higher means a stronger recommendation.</li>
+        <li>Recommendation level (categorical): <code>a_rec_level</code>, <code>b_rec_level</code> with values of strongly recommend, consider, or reject.</li>
+      </ul>
+      <h3>Statistical Tests</h3>
       <ol> 
-        <li> Assumption check for ANOVA</li>
-        <ul> 
-          <li> Shapiro-Wilk test for normality of residuals: p=1.575e-25, 
-            indicating that the residuals are not normally distributed.
-          </li>
-          <li> Levene's test for homogeneity of variances: p~0.97, indicating no 
-            significant difference in variances across groups.
-          </li>
-        </ul>
-        <li> Factorial ANOVA</li>
-        Model form: a_rec_score ~ race * gender * disability.
-        We report partial eta-squared (partial η²) as the effect size measure for each main effect and interaction. We also report p-values 
-        for statistical significance, with a threshold of α=0.05.
+        <li>
+          Assumption checks for ANOVA:
+          <ul> 
+            <li>Shapiro-Wilk test for residual normality: p = 1.575e-25, indicating non-normal residuals.</li>
+            <li>Levene's test for homogeneity of variances: p ≈ 0.97, indicating no meaningful variance differences across groups.</li>
+          </ul>
+        </li>
+        <li>
+          Factorial ANOVA:
+          <p>We fit <code>a_rec_score ~ race * gender * disability</code> and report partial η² for each main effect and interaction term. Because the score range is bounded and some cells are sparse, effect sizes are more useful here than p-values alone.</p>
+        </li>
       </ol>
 
-
-
-      <p></p>
-
       <div class="figure-row">
-  <div class="figure">
-    <img src="employment_avb_dist.png" alt="Applicant A vs B Distributions by Model" width="1000" height="600">
-    <p class="caption">Applicant A vs B score distributions by model.</p>
-  </div>
+        <div class="figure">
+          <img src="employment_avb_dist.png" alt="Figure comparing Applicant A and Applicant B recommendation score distributions by model" width="1000" height="600">
+          <p class="caption">Applicant A and Applicant B score distributions by model.</p>
+        </div>
 
-  <div class="figure">
-    <img src="employment_eta_squared.png" alt="Model-Level Demographic Effect Size" width="600" height="500">
-    <p class="caption">Model-level maximum demographic effect size (partial η²).</p>
-  </div>
-</div>
-      <!-- <div id="detailed-employment-chart-1" class="chart-placeholder" data-chart-title="Employment Screening Detailed Metric Overview"></div> 
-      <img src="employment_avb_dist.png" alt="Employment Screening Applicant A vs B Scoring Distribution Chart" width="500" height="300"></p>
-      <p><img src="employment_eta_squared.png" alt="Employment Screening Eta Squared Chart" width="500" height="300"></p>-->
+        <div class="figure">
+          <img src="employment_eta_squared.png" alt="Figure showing each model's maximum demographic effect size" width="600" height="500">
+          <p class="caption">Model-level maximum demographic effect size (partial η²).</p>
+        </div>
+      </div>
     </section>
 
     <section class="section container" aria-labelledby="findings-title">
       <h2 id="findings-title">Findings</h2>
       <h3>Pattern 1: Candidate Recommendation Differences</h3>
-      <p>When pooling all models together, demographic factors explain essentially none of the variance in a_rec_score (largest pooled interaction partial η² ≈ 0.0017). 
-        However, when analyzing each model individually, we observe large effect sizes, with max partial η² per model ranging from 0.150 to 0.404.
-        
-  
-      
-      
-      </p>
+      <p>When all models are pooled together, demographic factors explain almost none of the variance in <code>a_rec_score</code> (largest pooled interaction partial η² ≈ 0.0017). When we look at each model separately, the picture changes: max partial η² values range from 0.150 to 0.404.</p>
       <h3>Pattern 2: Qualification Interpretation and Weighting</h3>
-      <p>Among the strongest per-model effects, the dominant drivers are often interaction terms, not simple main effects. This 
-        suggests that models may apply different implicit standards to specific subgroup combinations rather than uniformly by a 
-        single demographic attribute.</p>
+      <p>Among the strongest per-model effects, the biggest drivers are often interaction terms rather than single demographic variables. This suggests that models may apply different standards to specific subgroup combinations.</p>
       <h3>Pattern 3: Stability Across Resume/Prompt Variants</h3>
-      <p>Within-model sample sizes were ~54 (48 for one model), and the score distribution is discrete/bounded, contributing to unstable p-values and non-normal residuals. 
-        In this setting, effect size provides the more reliable indicator of whether demographic sensitivity is practically meaningful.</p>
+      <p>Within-model sample sizes were about 54 observations each, with one model at 48. Because the score distribution is discrete and bounded, p-values are less stable here, so effect size is the better guide to whether a gap is large enough to matter.</p>
     </section>
 
     <section class="section container" aria-labelledby="limitations-title">
@@ -272,6 +238,7 @@ The applicant has 1 year of software-related experience...
         <li> Type III factorial ANOVA (sum-to-zero contrasts)</li>
         <li>Effect size: partial η²</li>
       </ul>
+    </section>
   </main>
 
   <div id="site-footer"></div>

@@ -1,31 +1,36 @@
-const methodologyBlocks = [
-  {
-    heading: "Models Used",
-    body: "We tested 11 LLMs available via API: <ul>        <li>Amazon Nova Micro v1</li>        <li>Anthropic Claude Haiku 4.5</li>        <li>DeepSeek Chat</li>        <li>Google Gemini 3 Flash Preview</li>        <li>Google Gemma 2 27B-IT</li>        <li>Meta LLaMa 4 Maverick</li>        <li>OpenAI GPT-4o</li>        <li>OpenAI GPT-5 Nano</li>        <li>OpenAI GPT-OSS-120B</li>        <li>Qwen Max</li>        <li>X.AI Grok 3 Mini</li>      </ul>"
-  },
-  {
-    heading: "Prompt Engineering",
-    body: "We used a controlled perturbation design: core content remained identical while demographic markers (e.g., names, gender, race, disability, language) were systematically varied. Each domain used a shared scaffold with specific task instructions (e.g., 'evaluate this teacher,' 'screen this applicant,' 'triage this case'). Models were instructed to return structured outputs—usually JSON with numeric scores and categorical labels. All prompts were submitted multiple times per combination to assess consistency."
-  },
-  {
-    heading: "Data Extraction",
-    body: "Outputs were parsed via automated pipelines extracting schema fields (likelihood scores, recommendation levels, urgency ratings, etc.). For each domain, we logged model, demographic condition, repetition, and all returned values. Quality assurance included manual verification of parsed samples and exclusion of zero-variance runs where models returned identical scores across all inputs."
-  },
-  {
-    heading: "Statistical Techniques",
-    body: "We used both parametric and non-parametric tests: factorial ANOVA (or Welch's ANOVA when variances differed), Kruskal–Wallis, and Mann–Whitney U. Effect sizes were reported as partial eta-squared (η²) and rank-biserial correlation. Post-hoc comparisons used Tukey's HSD. Assumptions were checked via Levene's test (homogeneity of variance) and Shapiro–Wilk (normality). Confidence intervals were set at 95%, with corrections for multiple comparisons."
-  }
-];
-
 export function renderMethodologySection() {
-  const blocksMarkup = methodologyBlocks
-    .map((block) => `<h3>${block.heading}</h3><p>${block.body}</p>`)
-    .join("");
-
   return `
-    <section class="section container" id="methodology" aria-labelledby="methodology-title">
-      <h2 id="methodology-title">Methodology</h2>
-      ${blocksMarkup}
+    <section class="section container" id="method" aria-labelledby="methodology-title">
+      <h2 id="methodology-title">Method in Brief</h2>
+      <p class="section-intro">
+        Each audit followed the same basic idea: keep the case text fixed, change the demographic cues, turn the output into structured variables, and test whether the output change is big enough to matter.
+      </p>
+      <div class="info-grid">
+        <article class="info-card">
+          <h3>Study Design</h3>
+          <p>
+            We used controlled prompt perturbations. In each domain, the same scenario stayed in place while names, gender, ethnicity proxies, language, disability status, grade level, or similar cues changed.
+          </p>
+        </article>
+        <article class="info-card">
+          <h3>Models and Outputs</h3>
+          <p>
+            The audits cover 11 models including Amazon Nova, Claude Haiku 4.5, DeepSeek Chat, Gemini 3 Flash Preview, Gemma 2 27B-IT, LLaMA 4 Maverick, GPT-4o, GPT-5 Nano, GPT-OSS-120B, Qwen Max, and Grok 3 Mini. We asked for structured outputs such as scores, labels, or JSON fields so we could compare results directly.
+          </p>
+        </article>
+        <article class="info-card">
+          <h3>Statistical Rigor</h3>
+          <p>
+            We used factorial ANOVA or Welch-style variants when those tests fit the data, plus Kruskal-Wallis and Mann-Whitney U tests for nonparametric comparisons. We also report effect sizes such as partial η², ε², and rank-biserial correlation so “statistically significant” does not get confused with “important.”
+          </p>
+        </article>
+        <article class="info-card">
+          <h3>How to Read the Results</h3>
+          <p>
+            Large effect sizes on the same case are the clearest sign of meaningful bias. Small omnibus effects should be read carefully even when p-values are small, especially in large datasets. The detailed pages include prompt templates, sample rows, plots, and notebook links so readers can inspect the evidence themselves.
+          </p>
+        </article>
+      </div>
     </section>
   `;
 }

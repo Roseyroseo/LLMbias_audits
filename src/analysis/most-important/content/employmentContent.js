@@ -12,17 +12,7 @@ export const EMPLOYMENT_KEY_CONTENT = {
     "Findings were consistent within a fixed prompt and set of experiences, but per-model sample sizes (~54 per model) and sparse factorial cells limit generalizability.",
     "Robustness checks across different resume versions and prompt variations showed consistent patterns of demographic sensitivity, reinforcing the importance of careful model selection and auditing."
   ],
-  implications: "These findings suggest that even when models appear to be neutral at the system level, they may exhibit significant demographic bias at the individual model level. Hiring teams should use model-specific auditing and avoid assuming that a model is fair simply because it performs well on average.",
-  figures: [
-    {
-      id: "employment_eta_squared",
-      src: "src/analysis/most-important/content/images/employment_eta_squared.png",
-      caption: "Partial η² by model (employment)",
-    },
-    {
-      id: "employment_avb_dist",
-      src: "src/analysis/most-important/content/images/employment_avb_dist.png",
-      caption: "Average bias distribution across demographics",
-    },
-  ],
+  implications: "These results suggest that a model can look neutral in the pooled average while still showing meaningful demographic bias on its own. Hiring teams should audit models one by one instead of assuming the average result means the tool is fair.",
+  limitation: "The strongest employment claims are model-specific rather than universal. Sparse cells and bounded scores mean effect sizes tell the story more clearly than ANOVA p-values alone.",
+  figureNote: "These visuals compare the calm pooled average to the more important model-level picture. The main point is that an average can hide meaningful disparities inside specific models and interaction terms."
 };

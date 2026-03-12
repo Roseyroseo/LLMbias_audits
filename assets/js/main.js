@@ -36,6 +36,10 @@ function setupNavigation() {
   const dropdownButtons = header.querySelectorAll(".nav-dropdown-toggle");
   const isDesktop = () => window.innerWidth >= 840;
 
+  function syncHeaderOffset() {
+    document.documentElement.style.setProperty("--header-offset", `${header.offsetHeight}px`);
+  }
+
   function syncDropdownMode() {
     dropdownButtons.forEach((button) => {
       const menuId = button.getAttribute("aria-controls");
@@ -132,9 +136,11 @@ function setupNavigation() {
     }
   });
 
+  syncHeaderOffset();
   syncDropdownMode();
 
   window.addEventListener("resize", () => {
+    syncHeaderOffset();
     syncDropdownMode();
 
     if (isDesktop()) {
@@ -157,11 +163,12 @@ function setupArtifactLinks() {
 }
 
 function setupSmoothScrolling() {
-  const anchorLinks = document.querySelectorAll('a[href^="#"]');
+  const anchorLinks = document.querySelectorAll('a[href^="#"], a[href^="index.html#"]');
 
   anchorLinks.forEach((anchor) => {
     anchor.addEventListener("click", (event) => {
-      const targetId = anchor.getAttribute("href").slice(1);
+      const href = anchor.getAttribute("href");
+      const targetId = href.includes("#") ? href.slice(href.indexOf("#") + 1) : "";
       const target = document.getElementById(targetId);
 
       if (!target) {
@@ -171,6 +178,90 @@ function setupSmoothScrolling() {
       event.preventDefault();
       target.scrollIntoView({ behavior: "smooth", block: "start" });
     });
+  });
+}
+
+function setupImageZoom() {
+  const zoomableImages = Array.from(document.querySelectorAll("main img")).filter(
+    (image) => !image.closest(".image-lightbox") && image.dataset.zoomDisabled !== "true"
+  );
+
+  if (!zoomableImages.length) {
+    return;
+  }
+
+  const modal = document.createElement("div");
+  modal.className = "image-lightbox";
+  modal.innerHTML = `
+    <div class="lightbox-backdrop" data-lightbox-close="true"></div>
+    <div class="lightbox-dialog" role="dialog" aria-modal="true" aria-labelledby="lightbox-caption" tabindex="-1">
+      <button type="button" class="lightbox-close" data-lightbox-close="true" aria-label="Close enlarged image">Close</button>
+      <img class="lightbox-image" alt="">
+      <p class="lightbox-caption" id="lightbox-caption"></p>
+    </div>
+  `;
+
+  document.body.appendChild(modal);
+
+  const dialog = modal.querySelector(".lightbox-dialog");
+  const modalImage = modal.querySelector(".lightbox-image");
+  const modalCaption = modal.querySelector(".lightbox-caption");
+  let lastTrigger = null;
+
+  function closeModal() {
+    modal.classList.remove("is-open");
+    document.body.style.overflow = "";
+
+    if (lastTrigger) {
+      lastTrigger.focus();
+    }
+  }
+
+  function openModal(image) {
+    lastTrigger = image;
+    modalImage.src = image.currentSrc || image.src;
+    modalImage.alt = image.alt || "";
+
+    const captionText =
+      image.getAttribute("alt") ||
+      image.closest("figure")?.querySelector("figcaption, .caption")?.textContent ||
+      "Expanded figure";
+
+    modalCaption.textContent = captionText;
+    modal.classList.add("is-open");
+    document.body.style.overflow = "hidden";
+    dialog.focus();
+  }
+
+  zoomableImages.forEach((image) => {
+    image.classList.add("zoomable-image");
+
+    if (!image.hasAttribute("tabindex")) {
+      image.tabIndex = 0;
+    }
+
+    image.setAttribute("role", "button");
+    image.setAttribute("aria-haspopup", "dialog");
+
+    image.addEventListener("click", () => openModal(image));
+    image.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openModal(image);
+      }
+    });
+  });
+
+  modal.addEventListener("click", (event) => {
+    if (event.target instanceof HTMLElement && event.target.dataset.lightboxClose === "true") {
+      closeModal();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && modal.classList.contains("is-open")) {
+      closeModal();
+    }
   });
 }
 
@@ -188,11 +279,12 @@ function injectLayout() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   injectLayout();
   renderHomePageSections();
   setupNavigation();
   setupArtifactLinks();
   setupSmoothScrolling();
-  renderPlaceholderCharts();
+  await renderPlaceholderCharts();
+  setupImageZoom();
 });

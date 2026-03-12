@@ -12,12 +12,27 @@ export const SITE_CONFIG = {
 export const NAV_ITEMS = [
   {
     type: "link",
-    label: "The Team",
-    href: "src/team/index.html"
+    label: "Home",
+    href: "index.html"
+  },
+  {
+    type: "link",
+    label: "Problem",
+    href: "index.html#problem"
+  },
+  {
+    type: "link",
+    label: "Method",
+    href: "index.html#method"
+  },
+  {
+    type: "link",
+    label: "Results",
+    href: "index.html#results"
   },
   {
     type: "dropdown",
-    label: "Detailed Analysis",
+    label: "Detailed Analyses",
     items: [
       {
         label: "Education Audit",
@@ -36,6 +51,11 @@ export const NAV_ITEMS = [
         href: "src/analysis/detailed/employment-screening.html"
       }
     ]
+  },
+  {
+    type: "link",
+    label: "Team",
+    href: "src/team/index.html"
   }
 ];
 
