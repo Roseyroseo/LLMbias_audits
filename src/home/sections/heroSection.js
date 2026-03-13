@@ -47,7 +47,7 @@ export function renderHeroSection() {
         </article>
         <article class="metric-card">
           <h2>Approach</h2>
-          <p>We kept the case text the same and changed demographic cues such as names, gender, language, and disability status.</p>
+          <p>We kept the case text the same and varied demographic cues such as names, gender, language, and disability status.</p>
         </article>
         <article class="metric-card">
           <h2>Results</h2>
