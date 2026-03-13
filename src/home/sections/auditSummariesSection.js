@@ -8,10 +8,10 @@ const audits = [
     title: "Education Audit",
     detailedPage: "src/analysis/detailed/education.html",
     keyContent: EDUCATION_KEY_CONTENT,
-    task: "AI-text detection and teacher evaluation with the same underlying work and different demographic cues.",
+    task: "AI-text detection on identical text and teacher evaluation with the same underlying work and different demographic cues.",
     charts: [
-      { id: "home-education-chart-1", title: "Education Bias Score by Group" },
-      { id: "home-education-chart-2", title: "Education Recommendation Distribution" }
+      { id: "home-education-chart-1", title: "AI Detection (false positive): Ethnicity Heatmap of Mean Parsed Scores" },
+      { id: "home-education-chart-2", title: "Teacher evaluation audit (layoff condition): Difference in mean scores" }
     ]
   },
   {

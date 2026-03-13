@@ -32,18 +32,18 @@ export function renderHeroSection() {
 
   return `
     <section class="hero container" aria-labelledby="hero-title">
-      <p class="eyebrow">DSC 180B Capstone Project</p>
+      <p class="eyebrow">DSC 180AB Capstone Project</p>
       <h1 id="hero-title">${SITE_CONFIG.siteTitle}</h1>
       <p class="hero-lead">
-        We audited 11 widely used large language models to ask a simple question: when the same essay, resume, legal case, or patient report stays the same, do decisions change when demographic cues change? Across education, legal support, employment screening, and mental-health triage, we found that the answer depends a lot on the task and the model. The largest gaps showed up in settings tied to sanctions, screening, and personnel decisions.
+        We audited 11 widely used large language models to ask a simple question: when the same essay, resume, legal case, or patient report stays the same, do decisions change when demographic cues change? Across education, legal support, employment screening, and mental-health triage, we found that the answer depends a lot on the task, specific framing, and the model. The largest gaps showed up in settings tied to sanctions, screening, and personnel decisions.
       </p>
       <p class="hero-supporting-copy">
-        This matters to instructors, hiring teams, legal aid groups, clinicians, and product teams deciding whether LLM outputs are safe enough to use in real decisions. We are not trying to label every model as fair or biased. We want to show where disparities appear, where they seem limited, and how strong the evidence is.
+        We interviewed professionals across various fields: Instructors, hiring teams, legal aid groups, clinicians, and product teams in order to investigate their concerns surrounding whether LLM outputs are safe enough to use in their respective domain contexts. <br><br>Our audits are not meant to label models as fair or biased; rather, we want to showcase where disparities appear, where they seem limited, and open up discussions about the implications of these findings and the potential risk of deploying these systems without proper oversight.
       </p>
       <div class="hero-metrics" aria-label="Project highlights">
         <article class="metric-card">
           <h2>Problem</h2>
-          <p>LLMs are starting to shape decisions that affect students, job seekers, patients, and people looking for legal help.</p>
+          <p>Institutions and individuals are increasingly relying on LLM-based systems to make decisions that affect students, job seekers, patients, and people looking for legal help.</p>
         </article>
         <article class="metric-card">
           <h2>Approach</h2>
