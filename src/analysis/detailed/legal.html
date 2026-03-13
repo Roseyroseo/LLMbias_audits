@@ -199,6 +199,7 @@
       to identical legal scenarios. This large sample size increases the statistical power of the analysis and allows 
       small demographic effects to be detected while also enabling robust estimation of effect sizes.
       </p>
+
     </section>
 
     <section class="section container" aria-labelledby="metrics-title">
@@ -209,6 +210,7 @@
 
       <h3>Omnibus Kruskal-Wallis Tests Across Outcomes</h3>
 
+      <center>
       <table class="results-table">
         <caption>Omnibus Kruskal-Wallis Tests Across Outcomes</caption>
 
@@ -390,6 +392,7 @@
 
         </tbody>
       </table>
+      </center>
 
       <p class="table-notes">
         <strong>Notes.</strong> Values are from Kruskal-Wallis omnibus tests. 
@@ -400,33 +403,46 @@
 
       <p>
         The Kruskal&ndash;Wallis test was used as a nonparametric omnibus test to determine whether demographic groups differed in their scoring distributions.
-
-        Epsilon squared (&epsilon;<sup>2</sup>) was reported as the effect size for Kruskal&ndash;Wallis tests to estimate the proportion of variance in model scores attributable to demographic group differences.
-
         When omnibus tests indicated potential group differences, pairwise comparisons were conducted using the Mann&ndash;Whitney U test to identify which specific demographic groups differed in their score distributions.
-
         Holm’s correction was applied to pairwise p-values to control the familywise error rate and reduce the risk of false positives resulting from multiple comparisons.
-
         Cliff’s delta (&delta;) was used as the effect size for Mann&ndash;Whitney comparisons because it provides a distribution-free measure of the magnitude and direction of differences between two ordinal groups.
       </p>
 
+
+      <p>
+        In this audit, p-values indicate whether the observed differences across demographic groups are unlikely to be due to random chance alone, but they 
+        do not show how large or practically meaningful those differences are. 
+        
+        For the omnibus Kruskal-Wallis tests, epsilon squared (&epsilon;<sup>2</sup>) 
+        estimates how much of the variation in model scores is associated with a factor such as model, gender, ethnicity, immigration status, or age group. 
+        Values close to 0 indicate that the factor explains very little of the variation, while larger values indicate that the factor accounts for more of 
+        the observed differences. In these results, demographic variables usually had very small effect sizes, often &epsilon;<sup>2</sup> &le; 0.002, meaning 
+        that even when a p-value was statistically significant, the practical impact was minimal. By contrast, the model factor had much larger &epsilon;<sup>2</sup> 
+        values, showing that differences in outputs were driven primarily by which model generated the response. For pairwise Mann-Whitney comparisons, Cliff&rsquo;s 
+        delta (&delta;) measures the direction and magnitude of differences between two groups: values near 0 indicate little difference, positive values mean the 
+        first group tended to receive higher scores, and negative values mean the second group tended to receive higher scores. Larger absolute values indicate 
+        greater separation between the two groups. Taken together, these statistics show that p-values identify whether differences are statistically detectable, 
+        while &epsilon;<sup>2</sup> and Cliff&rsquo;s &delta; help interpret how large those differences are in practice.
+      </p>
+
+      <center>
       <figure class="figure">
         <img src="judge_kruskal_wallis_case_1.png" alt="Heatmap summarizing Case 1 Kruskal-Wallis effect sizes by model and demographic factor" width="500" height="600">
         <figcaption class="caption">Case 1 Kruskal-Wallis effect sizes by model and demographic factor.</figcaption>
       </figure>
+      </center>
 
-      <p>
-        Because the outcome variables are ordinal ratings, nonparametric statistical methods were used. Kruskal&ndash;Wallis tests evaluated omnibus differences across demographic groups, with epsilon squared (&epsilon;<sup>2</sup>) reported as an effect size representing the proportion of variance explained. When omnibus results suggested potential group differences, pairwise comparisons were conducted using the Mann&ndash;Whitney U test with Holm correction for multiple comparisons. Cliff&rsquo;s delta (&delta;) was reported as the pairwise effect size to quantify the magnitude and direction of group differences.
-      </p>
-
+      <center>
       <figure class="figure">
         <img src="judge_mann_whitney_pairwise.png" alt="Heatmap of Mann-Whitney pairwise comparison effect sizes across models" width="500" height="600">
         <figcaption class="caption">Model-wise Mann-Whitney pairwise comparisons of demographic variables.</figcaption>
       </figure>
-
+      </center>
+      <center>
       <p>
         The visualization above summarizes the magnitude of demographic effects across models and scoring dimensions.
       </p>
+      </center>
     </section>
 
     <section class="section container" aria-labelledby="findings-title">
